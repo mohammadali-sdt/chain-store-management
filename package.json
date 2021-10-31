@@ -1,0 +1,25 @@
+{
+  "name": "shop_management",
+  "version": "1.0.0",
+  "description": "a app for shop management",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadali-sdt/chain-store-management.git"
+  },
+  "author": "MohammadAli Sedaghat & Ali Golestan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammadali-sdt/chain-store-management/issues"
+  },
+  "homepage": "https://github.com/mohammadali-sdt/chain-store-management#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.9"
+  }
+}

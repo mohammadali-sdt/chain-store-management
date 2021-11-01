@@ -22,3 +22,5 @@ const addressSchema = new mongoose.Schema({
     maxLength: [10, "A postal code must be have 10 digits"],
   },
 });
+
+module.exports = addressSchema;

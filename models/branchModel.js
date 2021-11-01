@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const addressSchema = require("./addressSchema");
 
 const branchSchema = new mongoose.Schema({
   br_name: {
@@ -18,5 +19,9 @@ const branchSchema = new mongoose.Schema({
     minLength: [11, "A phone must have 11 digit"],
     maxLength: [11, "A phone must have 11 digit"],
     required: [true, "A branch must have a phone"],
+  },
+  br_address: {
+    type: addressSchema,
+    required: [true, "A branch must have address"],
   },
 });

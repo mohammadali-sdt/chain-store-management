@@ -30,6 +30,7 @@ const customerSchema = new mongoose.Schema({
   cu_email: {
     type: String,
     required: [true, "A customer must have a email!"],
+    lowercase: true,
     unique: true,
   },
   cu_password: {
@@ -40,4 +41,24 @@ const customerSchema = new mongoose.Schema({
     type: addressSchema,
     required: [true, "A customer must have address"],
   },
+  cu_password: {
+    type: String,
+    required: [true, 'Please provide a password'],
+    minlength: 8,
+    select: false
+  },
+  cu_passwordConfirm:{
+    type: String,
+    required: [true, 'Please confirm your password'],
+    validate: {
+      validator: function(field) {
+        return field === this.em_password;
+      },
+      message: "Passwords are not the same!"
+    }
+  },
 });
+
+const Customer = mongoose.model('Customer', customerSchema);
+
+module.exports = Customer;

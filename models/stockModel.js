@@ -23,3 +23,7 @@ const stockSchema = new mongoose.Schema({
     required: [true, "A stock must have address"],
   },
 });
+
+const Stock = mongoose.Model("Customer", stockSchema);
+
+module.exports = Stock;

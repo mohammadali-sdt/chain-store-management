@@ -30,6 +30,7 @@ const customerSchema = new mongoose.Schema({
   cu_email: {
     type: String,
     required: [true, "A customer must have a email!"],
+    unique: true,
   },
   cu_password: {
     type: String,

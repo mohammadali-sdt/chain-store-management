@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const addressSchema = require("./addressSchema");
 
 const stockSchema = new mongoose.Schema({
   st_name: {
@@ -16,5 +17,9 @@ const stockSchema = new mongoose.Schema({
   st_capacity: {
     type: Number,
     required: [true, "A stock must have a capacity!"],
+  },
+  st_address: {
+    type: addressSchema,
+    required: [true, "A stock must have address"],
   },
 });

@@ -10,7 +10,7 @@ const branchSchema = new mongoose.Schema({
   },
   br_owner: {
     type: String,
-    minLength: [5, "A branch owner must have more or equal 5 characters"],
+    minLength: [3, "A branch owner must have more or equal 3 characters"],
     maxLength: [40, "A branch owner must have less or equal 40 characters"],
     required: [true, "A branch must have a owner"],
   },
@@ -25,3 +25,5 @@ const branchSchema = new mongoose.Schema({
     required: [true, "A branch must have address"],
   },
 });
+
+const Branch = mongoose.model('Branch', branchSchema);

@@ -24,6 +24,6 @@ const stockSchema = new mongoose.Schema({
   },
 });
 
-const Stock = mongoose.Model("Customer", stockSchema);
+const Stock = mongoose.model("Customer", stockSchema);
 
 module.exports = Stock;

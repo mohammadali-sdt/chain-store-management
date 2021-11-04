@@ -22,6 +22,6 @@ const supplySchema = new mongoose.Schema({
     }
 });
 
-const SuPu_supply = mongoose.model('SuPu_supply', supplySchema);
+const SuPr_supply = mongoose.model('SuPr_supply', supplySchema);
 
-module.exports = SuPu_supply;
+module.exports = SuPr_supply;

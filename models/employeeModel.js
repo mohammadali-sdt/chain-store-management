@@ -49,7 +49,7 @@ const employeeSchema = new mongoose.Schema({
     minLength: [9, "A personnel code must have 9 digits"],
     maxLength: [9, "A personnel code must have 9 digits"],
     unique: true,
-    required: [true, "A employee must have a phone"],
+    required: [true, "A employee must have a personnel code"],
   },
   em_role: {
     type: String,

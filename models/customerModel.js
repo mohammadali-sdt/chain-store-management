@@ -33,10 +33,6 @@ const customerSchema = new mongoose.Schema({
     lowercase: true,
     unique: true,
   },
-  cu_password: {
-    type: String,
-    required: [true, "A customer must have set a password!"],
-  },
   cu_address: {
     type: addressSchema,
     required: [true, "A customer must have address"],
@@ -52,12 +48,18 @@ const customerSchema = new mongoose.Schema({
     required: [true, 'Please confirm your password'],
     validate: {
       validator: function(field) {
-        return field === this.em_password;
+        return field === this.cu_password;
       },
       message: "Passwords are not the same!"
     }
   },
 });
+
+customerSchema.virtual('age').get(function() {
+  const current_year = new Date().getFullYear();
+  return current_year - this.cu_birthDate.getFullYear();
+})
+
 
 const Customer = mongoose.model('Customer', customerSchema);
 

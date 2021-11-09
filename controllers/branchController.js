@@ -1,24 +1,6 @@
 const Branch = require('../models/branchModel');
+const genericCrud = require('../controllers/genericCrud');
 
-exports.getAllBranches = async (req, res, next) => {
-    const branches = await Branch.find();
+exports.getAllBranches = genericCrud.getAll(Branch);
 
-    res.status(200).json({
-        status: 'success',
-        data: {
-            data: branches,
-        }
-    });
-};
-
-exports.createBranch = async (req, res, next) => {
-    console.log(req.body);
-    const branch = await Branch.create(req.body);
-
-    res.status(200).json({
-        status: 'success',
-        data : {
-            data: branch
-        },
-    });
-};
+exports.createBranch = genericCrud.createOne(Branch);

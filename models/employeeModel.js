@@ -40,7 +40,7 @@ const employeeSchema = new mongoose.Schema({
     required: [true, "A employee must have a id"],
     unique: true,
   },
-  em_brithday: {
+  em_brithDate: {
     type: Date,
     required: [true, 'A employee must have brith date']
   },
@@ -80,6 +80,12 @@ const employeeSchema = new mongoose.Schema({
     required: [true, 'A employee must have address']
   }
 });
+
+employeeSchema.virtual('age').get(function() {
+  const current_year = new Date().getFullYear();
+  return current_year - this.em_brithDate.getFullYear();
+})
+
 
 const Employee = mongoose.model('Employee', employeeSchema);
 

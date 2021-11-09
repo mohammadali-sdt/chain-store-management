@@ -14,7 +14,7 @@ const supplySchema = new mongoose.Schema({
     },
     supr_date: {
         type: Date,
-        required: [true, "A supply must have a date"]
+        default: Date.now(),
     },
     supr_num: {
         type: Number,

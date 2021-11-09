@@ -79,12 +79,15 @@ const employeeSchema = new mongoose.Schema({
     type: addressSchema,
     required: [true, 'A employee must have address']
   }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 employeeSchema.virtual('age').get(function() {
   const current_year = new Date().getFullYear();
   return current_year - this.em_brithDate.getFullYear();
-})
+});
 
 
 const Employee = mongoose.model('Employee', employeeSchema);

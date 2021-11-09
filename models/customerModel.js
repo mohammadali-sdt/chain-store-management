@@ -55,12 +55,6 @@ const customerSchema = new mongoose.Schema({
   },
 });
 
-customerSchema.virtual('age').get(function() {
-  const current_year = new Date().getFullYear();
-  return current_year - this.cu_birthDate.getFullYear();
-})
-
-
 const Customer = mongoose.model('Customer', customerSchema);
 
 module.exports = Customer;

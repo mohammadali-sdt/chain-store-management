@@ -63,10 +63,11 @@ const foodstuffSchema = new mongoose.Schema({
       values: ["plastic", "pocket"],
       message: "pack type either be plastic or pocket",
     },
+    required: [true, 'a foodstuff must have pack type']
   },
   fo_number: {
     type: Number,
-    default: 0,
+    default: 1,
   },
 });
 
@@ -149,6 +150,7 @@ const clothingSchema = new mongoose.Schema({
       values: ["sm", "md", "l", "xl", "xxl", "xxxl"],
       message: "Size either: sm, md, l, xl, xxl, xxxl",
     },
+    required: [true, 'a clothing must have size'],
   },
 });
 

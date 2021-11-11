@@ -119,8 +119,9 @@ const stockEmployeeSchema = new mongoose.Schema({
         default: Date.now(),
     },
     stem_section: {
-      type: String,
-      enum: ['internal', 'nav']
+        type: String,
+        enum: ['storage', 'publish'],
+        required: [true, 'stock employee must have a section']
     },
     stem_manager: {
         type: Boolean,
@@ -130,7 +131,7 @@ const stockEmployeeSchema = new mongoose.Schema({
 
 const StockEmployee = Employee.discriminator('StockEmployee', stockEmployeeSchema, 'stock');
 const centralEmployeeSchema = new mongoose.Schema({});
-const CentralEmployee = Employee.discriminator('CentralEmployee', centralEmployeeSchema,'central');
+const CentralEmployee = Employee.discriminator('CentralEmployee', centralEmployeeSchema, 'central');
 
 exports.Employee = Employee;
 exports.BranchEmployee = BranchEmployee;

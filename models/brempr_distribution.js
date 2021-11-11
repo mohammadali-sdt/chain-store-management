@@ -17,7 +17,7 @@ const brempr_distributionSchema = new mongoose.Schema({
             required: [true, 'the id of product is necessary']
         }
     }],
-    st_id: {
+    br_id: {
         type: mongoose.Types.ObjectId,
         ref: 'Branch',
         required: [true, 'the id of branch is necessary']

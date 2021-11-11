@@ -21,9 +21,9 @@ const stockSchema = new mongoose.Schema({
   st_address: {
     type: addressSchema,
     required: [true, "A stock must have address"],
-  },
+  }
 });
 
-const Stock = mongoose.model("Customer", stockSchema);
+const Stock = mongoose.model("Stock", stockSchema);
 
 module.exports = Stock;

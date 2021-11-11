@@ -70,9 +70,7 @@ const foodstuffSchema = new mongoose.Schema({
   },
 });
 
-const Foodstuff = Product.discriminators("Foodstuff", foodstuffSchema, {
-  discriminatorKey: "pr_category",
-});
+const Foodstuff = Product.discriminator("Foodstuff", foodstuffSchema, "Foodstuff");
 
 const homeApplianceSchema = new mongoose.Schema({
   ho_energyCh: {
@@ -116,12 +114,10 @@ const homeApplianceSchema = new mongoose.Schema({
   },
 });
 
-const HomeAppliance = Product.discriminators(
+const HomeAppliance = Product.discriminator(
   "HomeAppliance",
   homeApplianceSchema,
-  {
-    discriminatorKey: "pr_product",
-  }
+  "HomeAppliance"
 );
 
 const stationerySchema = new mongoose.Schema({
@@ -136,9 +132,7 @@ const stationerySchema = new mongoose.Schema({
   },
 });
 
-const Stationery = Product.discriminators("Stationery", stationerySchema, {
-  discriminatorKey: "pr_category",
-});
+const Stationery = Product.discriminator("Stationery", stationerySchema, "Stationery");
 
 const clothingSchema = new mongoose.Schema({
   cl_design: {
@@ -152,15 +146,13 @@ const clothingSchema = new mongoose.Schema({
   cl_size: {
     type: String,
     enum: {
-      values: ["Sm", "Md", "L", "XL", "XXL", "XXXL"],
-      message: "Size either: Sm,Md,L,XL,XXL,XXXL",
+      values: ["sm", "md", "l", "xl", "xxl", "xxxl"],
+      message: "Size either: sm, md, l, xl, xxl, xxxl",
     },
   },
 });
 
-const Clothing = Product.discriminators("Clothing", clothingSchema, {
-  discriminatorKey: "pr_category",
-});
+const Clothing = Product.discriminator("Clothing", clothingSchema, "Clothing");
 
 exports.Product = Product;
 exports.Foodstuff = Foodstuff;

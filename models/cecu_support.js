@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const cecu_schema = new mongoose.Schema({
+const cecu_supportSchema = new mongoose.Schema({
     ce_id: {
         type: mongoose.Types.ObjectId,
         ref: 'CentralEmployee',
@@ -24,6 +24,6 @@ const cecu_schema = new mongoose.Schema({
     }
 });
 
-const CeCu_Support = mongoose.model('CeCu_Support', cecu_schema);
+const CeCu_Support = mongoose.model('CeCu_Support', cecu_supportSchema);
 
 module.exports = CeCu_Support;

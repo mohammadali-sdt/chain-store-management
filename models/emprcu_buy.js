@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const emPrCuBuySchema = new mongoose.Schema({
+const emprcu_buySchema = new mongoose.Schema({
     em_id: {
         type: mongoose.Types.ObjectId,
         ref: 'BranchEmployee',
@@ -28,6 +28,6 @@ const emPrCuBuySchema = new mongoose.Schema({
     }
 });
 
-const EmPrCu_Buy = mongoose.model('EmPrCu_Buy', emPrCuBuySchema);
+const EmPrCu_Buy = mongoose.model('EmPrCu_Buy', emprcu_buySchema);
 
 module.exports = EmPrCu_Buy;

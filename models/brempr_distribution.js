@@ -26,7 +26,6 @@ const brempr_distributionSchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
-  //    stempr_num => virtual.
 });
 
 const BrEmPr_Distribution = mongoose.model('BrEmPr_Distribution', brempr_distributionSchema);

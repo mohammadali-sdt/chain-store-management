@@ -27,7 +27,6 @@ const stempr_moveSchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
-  //    stempr_num => virtual.
 });
 
 const StEmPr_Move = mongoose.model('StEmPr_Move', stempr_moveSchema);

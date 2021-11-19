@@ -38,14 +38,6 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-// pr_category: {
-//         type: String,
-//         enum: {
-//             values: ['foodstuff', 'home appliance', 'stationery', 'clothing'],
-//             message: 'category is either: foodstuff, home appliance, stationery, clothing',
-//         }
-//     }
-
 const Product = mongoose.model("Product", productSchema);
 
 const foodstuffSchema = new mongoose.Schema({

@@ -8,4 +8,6 @@ router
   .get(stockController.getAllStock)
   .post(stockController.createStock);
 
+router.route("/:city").get(stockController.getStocksByCity);
+
 module.exports = router;

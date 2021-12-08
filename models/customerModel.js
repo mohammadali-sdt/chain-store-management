@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const addressSchema = require("./addressSchema");
+const validator = require("validator");
 
 const customerSchema = new mongoose.Schema(
   {
@@ -36,6 +37,7 @@ const customerSchema = new mongoose.Schema(
       required: [true, "A customer must have a email!"],
       lowercase: true,
       unique: true,
+      validate: [validator.isEmail, "Please provie a valid email"],
     },
     cu_address: {
       type: addressSchema,

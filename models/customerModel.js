@@ -43,6 +43,7 @@ const customerSchema = new mongoose.Schema(
       type: addressSchema,
       required: [true, "A customer must have address"],
     },
+    cu_age: { type: Number },
     cu_password: {
       type: String,
       required: [true, "Please provide a password"],
@@ -66,10 +67,16 @@ const customerSchema = new mongoose.Schema(
   }
 );
 
-customerSchema.virtual("age").get(function () {
+// customerSchema.virtual("age").get(function () {
+//   const current_year = new Date().getFullYear();
+//   const age = current_year - this.cu_birthDate.getFullYear();
+//   return age;
+// });
+
+customerSchema.pre("save", function (next) {
   const current_year = new Date().getFullYear();
-  const age = current_year - this.cu_birthDate.getFullYear();
-  return age;
+  this.cu_age = current_year - this.cu_birthDate.getFullYear();
+  next();
 });
 
 const Customer = mongoose.model("Customer", customerSchema);

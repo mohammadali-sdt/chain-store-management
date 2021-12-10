@@ -17,3 +17,20 @@ exports.getStocksByCity = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getStockWithMaxCap = catchAsync(async (req, res, next) => {
+  const stock = await Stock.aggregate([
+    {
+      $group: {
+        _id: null,
+        maxCapacity: { $max: "$st_capacity" },
+        name: { $first: "$st_name" },
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    data: stock,
+  });
+});

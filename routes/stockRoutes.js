@@ -10,4 +10,6 @@ router
 
 router.route("/:city").get(stockController.getStocksByCity);
 
+router.route("/max/capacity").get(stockController.getStockWithMaxCap);
+
 module.exports = router;

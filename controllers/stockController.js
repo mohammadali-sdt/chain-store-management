@@ -22,12 +22,22 @@ exports.getStockWithMaxCap = catchAsync(async (req, res, next) => {
   const stock = await Stock.aggregate([
     {
       $group: {
-        _id: null,
+        _id: "$st_capacity",
         maxCapacity: { $max: "$st_capacity" },
-        name: { $first: "$st_name" },
+        name: { $push: { name: "$st_name" } },
       },
     },
+    {
+      $sort: {
+        maxCapacity: -1,
+      }
+    },
+    {
+      $limit: 1,
+    }
   ]);
+
+  // const stock = await Stock.find().sort({st_capacity: -1}).limit(1);
 
   res.status(200).json({
     status: "success",

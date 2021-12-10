@@ -42,3 +42,57 @@ exports.getEmploeeysByCity = catchAsync(async (req, res, next) => {
     data: employees,
   });
 });
+
+exports.getNumOfBranchEm = catchAsync(async (req, res, next) => {
+  const numOfEm = await employeeModel.BranchEmployee.aggregate([
+    {
+      $group: {
+        _id:null,
+        count: { $sum : 1 }
+      }
+    }
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    data : {
+      data: numOfEm,
+    }
+  });
+});
+
+exports.getNumOfCentralEm = catchAsync(async (req, res, next) => {
+  const numOfEm = await employeeModel.CentralEmployee.aggregate([
+    {
+      $group: {
+        _id:null,
+        count: { $sum : 1 }
+      }
+    }
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    data : {
+      data: numOfEm,
+    }
+  });
+});
+
+exports.getNumOfStockEm = catchAsync(async (req, res, next) => {
+  const numOfEm = await employeeModel.StockEmployee.aggregate([
+    {
+      $group: {
+        _id:null,
+        count: { $sum : 1 }
+      }
+    }
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    data : {
+      data: numOfEm,
+    }
+  });
+});

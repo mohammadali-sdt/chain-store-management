@@ -9,4 +9,5 @@ router
   .post(customerController.createCustomer);
 
 router.route("/young").get(customerController.getCustomersByAge);
+router.route('/:city').get(customerController.getCustomersByCity);
 module.exports = router;

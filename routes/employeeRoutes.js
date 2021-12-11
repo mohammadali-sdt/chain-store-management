@@ -12,4 +12,5 @@ router.route("/:city").get(employeeController.getEmploeeysByCity);
 router.route('/branch/num').get(employeeController.getNumOfBranchEm);
 router.route('/central/num').get(employeeController.getNumOfCentralEm);
 router.route('/stock/num').get(employeeController.getNumOfStockEm);
+router.route('/stock/managers/:city').get(employeeController.getManagerOfStockByCity);
 module.exports = router;

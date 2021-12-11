@@ -11,6 +11,8 @@ router.route("/homeappliance").post(productController.createHomeAppliance);
 router.route("/foodstuff/outdate").get(productController.getOutdateFoods);
 router
   .route("/homeappliance/heaviest")
-  .get(productController.gettheTheHeaviestHomeAppliance);
+  .get(productController.getHeaviestHomeAppliance);
+
+router.route('/homeappliance/lightest').get(productController.getLightestHomeAppliance)
 
 module.exports = router;

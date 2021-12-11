@@ -1,13 +1,16 @@
-const express = require('express');
-const productController = require('../controllers/productController');
+const express = require("express");
+const productController = require("../controllers/productController");
 
-const router = express.Router()
+const router = express.Router();
 
-router.route('/').get(productController.getAllProducts);
-router.route('/stationery').post(productController.createStationery);
-router.route('/clothing').post(productController.createClothing);
-router.route('/foodstuff').post(productController.createFoodstuff);
-router.route('/homeappliance').post(productController.createHomeAppliance);
-router.route('/foodstuff/outdate').get(productController.getOutdateFoods);
+router.route("/").get(productController.getAllProducts);
+router.route("/stationery").post(productController.createStationery);
+router.route("/clothing").post(productController.createClothing);
+router.route("/foodstuff").post(productController.createFoodstuff);
+router.route("/homeappliance").post(productController.createHomeAppliance);
+router.route("/foodstuff/outdate").get(productController.getOutdateFoods);
+router
+  .route("/homeappliance/heaviest")
+  .get(productController.gettheTheHeaviestHomeAppliance);
 
 module.exports = router;

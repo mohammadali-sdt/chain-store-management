@@ -113,3 +113,38 @@ exports.getManagerOfStockByCity = catchAsync(async (req, res, next) => {
         }
     });
 });
+
+exports.getStockWithMaxEmployee = catchAsync(async (req, res, next) => {
+    const data = await employeeModel.StockEmployee.aggregate([
+        {
+            $group: {
+                _id: '$stem_work',
+                count: {$sum: 1}
+            }
+        },
+        {
+            $sort: {
+                count: -1
+            }
+        },
+        {
+            $limit: 1
+        },
+        {
+            $lookup: {
+                from: 'stocks',
+                localField: "_id",
+                foreignField: "_id",
+                as:'stock'
+            }
+
+        },
+    ])
+
+    res.status(200).json({
+        status: "success",
+        data: {
+            data
+        }
+    })
+});

@@ -6,6 +6,7 @@ const supplySchema = new mongoose.Schema({
         minLength: [2, "A supplier name must have more or equal 2 characters"],
         maxLength: [255, "A supplier name must have less or equal 255 characters"],
         required: [true, "A supplier must have a name"],
+        lowercase: true,
     },
     pr_id: {
         type: mongoose.Schema.Types.ObjectId,

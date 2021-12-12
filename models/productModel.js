@@ -16,6 +16,7 @@ const productSchema = new mongoose.Schema(
       minLength: [2, "A brand name must have more or equal 2 characters"],
       maxLength: [255, "A brand name must have less or equal 255 characters"],
       required: [true, "A brand must have a name"],
+      lowercase: true,
     },
     pr_barcode: {
       type: String,

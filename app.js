@@ -6,6 +6,7 @@ const productRouter = require("./routes/productRoutes");
 const stockRouter = require("./routes/stockRoutes");
 const customerRouter = require("./routes/customerRoutes");
 const employeeRouter = require("./routes/employeeRoutes");
+const supplyRouter = require('./routes/supplyRoute');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use("/api/v1/product", productRouter);
 app.use("/api/v1/stock", stockRouter);
 app.use("/api/v1/customer", customerRouter);
 app.use("/api/v1/employee", employeeRouter);
+app.use('/api/v1/supply', supplyRouter)
 // if url is not in our routes, 404 Error. use all() because we want do it for all HTTP methods.
 app.all("*", (req, res, next) => {
   return next(

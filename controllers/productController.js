@@ -14,63 +14,48 @@ exports.getOutdateFoods = catchAsync(async (req, res, next) => {
     });
 
     res.status(200).json({
-        status: "success",
-        data: {
+        status: "success", data: {
             data: outdatedFoods,
         },
     });
 });
 
 exports.getHeaviestHomeAppliance = catchAsync(async (req, res, next) => {
-    const products = await productModel.HomeAppliance.aggregate([
-        {
-            $group: {
-                _id: "$ho_weight",
-                maxWeight: {$max: "$ho_weight"},
-                name: {$push: {name: "$pr_name"}},
-            },
+    const products = await productModel.HomeAppliance.aggregate([{
+        $group: {
+            _id: "$ho_weight", maxWeight: {$max: "$ho_weight"}, name: {$push: {name: "$pr_name"}},
         },
-        {
-            $sort: {
-                maxWeight: -1,
-            },
+    }, {
+        $sort: {
+            maxWeight: -1,
         },
-        {
-            $limit: 1,
-        },
-    ]);
+    }, {
+        $limit: 1,
+    },]);
 
     res.status(200).json({
-        status: "success",
-        data: {
+        status: "success", data: {
             data: products
         },
     });
 });
 
 exports.getLightestHomeAppliance = catchAsync(async (req, res, next) => {
-    const products = await productModel.HomeAppliance.aggregate([
-        {
-            $group: {
-                _id: "$ho_weight",
-                minWeight: {$min: "$ho_weight"},
-                name: {$push: {name: "$pr_name"}}
-            }
-        },
-        {
-            $sort: {
-                minWeight: 1
-            }
-        },
-        {
-            $limit: 1
+    const products = await productModel.HomeAppliance.aggregate([{
+        $group: {
+            _id: "$ho_weight", minWeight: {$min: "$ho_weight"}, name: {$push: {name: "$pr_name"}}
         }
-    ]);
-
+    }, {
+        $sort: {
+            minWeight: 1
+        }
+    }, {
+        $limit: 1
+    }]);
+    c
     res.status(200).json({
-        status: "success",
-        data: {
+        status: "success", data: {
             data: products
         }
     })
-})
+});

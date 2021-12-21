@@ -20,7 +20,7 @@ exports.getSupplierProducts = catchAsync(async (req, res, next) => {
     });
 });
 exports.getAllSupplierName = catchAsync(async (req, res, nex) => {
-    const suppliersName =await SuPr_Supply.aggregate([{
+    const suppliersName = await SuPr_Supply.aggregate([{
         $group: {
             _id: "$su_name",
 

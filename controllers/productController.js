@@ -59,3 +59,30 @@ exports.getLightestHomeAppliance = catchAsync(async (req, res, next) => {
         }
     })
 });
+
+exports.getfiveMaxPowerRangeProduct = catchAsync(async (req, res, next) => {
+    const data = await productModel.HomeAppliance.aggregate([
+        {
+            $group: {
+                _id: "$ho_powerRange",
+                maxPower: {$max: "$ho_powerRange"},
+                name: {$push: {name: "$pr_name"}},
+            },
+        },
+        {
+            $sort: {
+                maxPower: -1,
+            }
+        },
+        {
+            $limit: 5,
+        }
+    ])
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data
+        }
+    })
+})

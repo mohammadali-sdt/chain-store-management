@@ -135,7 +135,7 @@ exports.getStockWithMaxEmployee = catchAsync(async (req, res, next) => {
                 from: 'stocks',
                 localField: "_id",
                 foreignField: "_id",
-                as:'stock'
+                as: 'stock'
             }
 
         },
@@ -148,3 +148,40 @@ exports.getStockWithMaxEmployee = catchAsync(async (req, res, next) => {
         }
     })
 });
+
+exports.getBranchWithMinEmployee = catchAsync(async (req, res, next) => {
+        const data = await employeeModel.BranchEmployee.aggregate([{
+            $group: {
+                _id: '$brem_work',
+                count: {$sum: 1}
+            }
+        },
+            {
+                $sort: {
+                    count: -1
+                }
+
+            },
+            {
+                $limit: 1
+            },
+            {
+                $lookup: {
+                    from: 'branches',
+                    localField: "_id",
+                    foreignField: "_id",
+                    as: 'branch'
+
+                }
+            }
+        ])
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                data
+            }
+        })
+
+    }
+)

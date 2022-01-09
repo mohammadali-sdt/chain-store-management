@@ -71,10 +71,10 @@ const foodstuffSchema = new mongoose.Schema({
   },
 });
 
-foodstuffSchema.pre(/^find/, function (next) {
-  this.find({ fo_ep: { $gt: new Date() } });
-  next();
-});
+// foodstuffSchema.pre(/^find/, function (next) {
+//   this.find({ fo_ep: { $gt: new Date() } });
+//   next();
+// });
 
 const Foodstuff = Product.discriminator(
   "Foodstuff",

@@ -39,6 +39,13 @@ const productSchema = new mongoose.Schema(
   }
 );
 
+productSchema.pre(/^find/, function (next) {
+  this.find({
+    $or: [{ fo_ep: { $exists: false } }, { fo_ep: { $gt: new Date() } }],
+  });
+  next();
+});
+
 const Product = mongoose.model("Product", productSchema);
 
 const foodstuffSchema = new mongoose.Schema({
@@ -56,7 +63,7 @@ const foodstuffSchema = new mongoose.Schema({
       values: ["plastic", "pocket"],
       message: "pack type either be plastic or pocket",
     },
-    required: [true, 'a foodstuff must have pack type']
+    required: [true, "a foodstuff must have pack type"],
   },
   fo_number: {
     type: Number,
@@ -64,7 +71,16 @@ const foodstuffSchema = new mongoose.Schema({
   },
 });
 
-const Foodstuff = Product.discriminator("Foodstuff", foodstuffSchema, "Foodstuff");
+foodstuffSchema.pre(/^find/, function (next) {
+  this.find({ fo_ep: { $gt: new Date() } });
+  next();
+});
+
+const Foodstuff = Product.discriminator(
+  "Foodstuff",
+  foodstuffSchema,
+  "Foodstuff"
+);
 
 const homeApplianceSchema = new mongoose.Schema({
   ho_energyCh: {
@@ -126,7 +142,11 @@ const stationerySchema = new mongoose.Schema({
   },
 });
 
-const Stationery = Product.discriminator("Stationery", stationerySchema, "Stationery");
+const Stationery = Product.discriminator(
+  "Stationery",
+  stationerySchema,
+  "Stationery"
+);
 
 const clothingSchema = new mongoose.Schema({
   cl_design: {
@@ -143,7 +163,7 @@ const clothingSchema = new mongoose.Schema({
       values: ["sm", "md", "l", "xl", "xxl", "xxxl"],
       message: "Size either: sm, md, l, xl, xxl, xxxl",
     },
-    required: [true, 'a clothing must have size'],
+    required: [true, "a clothing must have size"],
   },
 });
 

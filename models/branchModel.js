@@ -26,6 +26,10 @@ const branchSchema = new mongoose.Schema({
   },
 });
 
-const Branch = mongoose.model('Branch', branchSchema);
+branchSchema.pre(/^find/, function (next) {
+  this.select("-__v");
+  next();
+});
+const Branch = mongoose.model("Branch", branchSchema);
 
 module.exports = Branch;

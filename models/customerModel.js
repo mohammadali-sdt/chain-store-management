@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const addressSchema = require("./addressSchema");
 const validator = require("validator");
+const bcrypt = require("bcrypt");
 
 const customerSchema = new mongoose.Schema(
   {
@@ -76,6 +77,16 @@ const customerSchema = new mongoose.Schema(
 customerSchema.pre("save", function (next) {
   const current_year = new Date().getFullYear();
   this.cu_age = current_year - this.cu_birthDate.getFullYear();
+  next();
+});
+
+customerSchema.pre("save", async function (next) {
+  if (!this.isModified("cu_password")) {
+    return next();
+  }
+  this.cu_password = await bcrypt.hash(this.cu_password, 12);
+  this.cu_passwordConfirm = undefined;
+
   next();
 });
 

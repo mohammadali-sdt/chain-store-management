@@ -169,6 +169,36 @@ const clothingSchema = new mongoose.Schema({
 
 const Clothing = Product.discriminator("Clothing", clothingSchema, "Clothing");
 
+// Create Views
+
+// Product.db.createCollection("Foods", {
+//   viewOn: "products",
+//   pipeline: [
+//     {
+//       $match: {
+//         pr_category: "Foodstuff",
+//       },
+//     },
+//   ],
+// });
+
+const FoodsView = mongoose.model("Foods", {}, "Foods");
+
+//
+
+// Product.db.createCollection("OutdatedFoods", {
+//   viewOn: "Foods",
+//   pipeline: [
+//     {
+//       $match: {
+//         fo_ep: { $lt: new Date() },
+//       },
+//     },
+//   ],
+// });
+
+const OutdatedFoodsView = mongoose.model("OutdatedFoods", {}, "OutdatedFoods");
+
 exports.Product = Product;
 exports.Foodstuff = Foodstuff;
 exports.HomeAppliance = HomeAppliance;

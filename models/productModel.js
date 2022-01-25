@@ -33,6 +33,10 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: [true, "A product must have price"],
     },
+    pr_image: {
+      type: String,
+      default: "product.jpg",
+    },
   },
   {
     discriminatorKey: "pr_category",

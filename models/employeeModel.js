@@ -170,6 +170,83 @@ const CentralEmployee = Employee.discriminator(
   "central"
 );
 
+// Create Views
+
+// Employee.db.createCollection("StockManager", {
+//   viewOn: "employees",
+//   pipeline: [
+//     {
+//       $match: {
+//         em_role: "stock",
+//         stem_manager: true,
+//       },
+//     },
+//     {
+//       $lookup: {
+//         from: "stocks",
+//         localField: "stem_work",
+//         foreignField: "_id",
+//         as: "stock",
+//       },
+//     },
+//   ],
+// });
+
+const StockManagerView = mongoose.model("StockManagerView", {}, "StockManger");
+
+// Employee.db.createCollection("NativeBranchEmployee", {
+//   viewOn: "employees",
+//   pipeline: [
+//     {
+//       $match: {
+//         em_role: "branch",
+//       },
+//     },
+//     {
+//       $lookup: {
+//         from: "branches",
+//         localField: "brem_work",
+//         foreignField: "_id",
+//         as: "branch",
+//       },
+//     },
+//     {
+//       $unwind: "$branch",
+//     },
+//     {
+//       $project: {
+//         native: {
+//           $eq: ["$em_address.city", "$branch.br_address.city"],
+//         },
+//         _id: 1,
+//         branch: 1,
+//       },
+//     },
+//     {
+//       $match: {
+//         native: true,
+//       },
+//     },
+//     {
+//       $lookup: {
+//         from: "employees",
+//         localField: "_id",
+//         foreignField: "_id",
+//         as: "employee",
+//       },
+//     },
+//     {
+//       $unwind: "$employee",
+//     },
+//   ],
+// });
+
+const NativeBranchEmployeeView = mongoose.model(
+  "NativeBranchEmployee",
+  {},
+  "NativeBranchEmployee"
+);
+
 exports.Employee = Employee;
 exports.BranchEmployee = BranchEmployee;
 exports.StockEmployee = StockEmployee;

@@ -1,0 +1,234 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif; */
+
+nav {
+  background-color: #9b6dff;
+  font-size: 1.35rem;
+  padding: 2rem;
+}
+
+.nav a {
+  text-decoration: none;
+  margin: 2rem;
+  font-family: Montserrat;
+  /* font-size: 1.25rem; */
+  color: white;
+  transition: all 0.3s ease;
+}
+.nav a:hover,
+.nav a:active,
+.nav a.active {
+  color: #fcc64a;
+}
+
+.form-border {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35rem;
+  padding: 5rem;
+  margin: 3rem auto;
+  border: 1px solid rgba(68, 68, 68, 0.178);
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.form-field {
+  letter-spacing: 0.1rem;
+  font-family: Open Sans;
+  margin-bottom: 2rem;
+}
+
+.form-field label {
+  color: #9b6dff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.form-field input {
+  font-family: 'Montserrat';
+  width: 25rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-top: 0.4rem;
+  outline-style: none;
+  border: 2px solid #9b6dff;
+}
+
+.role select {
+  font-family: 'Montserrat';
+  width: 25rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border-color: #9b6dff;
+  border: 2px solid #9b6dff;
+}
+
+.role select {
+  margin-top: 0.4rem;
+}
+
+.branch select {
+  font-family: 'Montserrat';
+  width: 25rem;
+  padding: 0.5rem;
+  margin-top: 0.4rem;
+  border-radius: 0.3rem;
+  border-color: #9b6dff;
+  border: 2px solid #9b6dff;
+}
+
+.button {
+  width: 10rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Open Sans';
+  border: 3px solid #9b6dff;
+  color: #9b6dff;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-color: #9b6dff;
+  color: white;
+}
+
+.button-div {
+  width: 100%;
+  display: flex;
+  align-self: start;
+}
+
+/* nav .product-btn {
+  color: rgb(230, 204, 92);
+}
+
+nav .home-btn {
+  color: rgb(230, 204, 92);
+} */
+
+.container {
+  margin-bottom: 5rem;
+}
+
+.products {
+  margin: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  /* grid-template-rows: repeat(auto-fit, minmax()); */
+  grid-gap: 5rem;
+}
+
+.product {
+  /* border: 1px solid #9b6dff59; */
+  border-radius: 3px;
+  display: flex;
+  gap: 0.7rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0.2rem 0.3rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+.product img {
+  height: 20rem;
+}
+.product__title {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  font-family: 'Open sans';
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.product__price {
+  font-family: 'Montserrat';
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+.detail-btn {
+  width: 10rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Open Sans';
+  border: 3px solid #9b6dff;
+  color: #9b6dff;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  /* width: 6rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-family: 'Open Sans';
+  border: 1px solid rgba(93, 5, 74, 0.87);
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(235, 94, 205, 0.637);
+  margin-top: 3rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer; */
+}
+
+.detail-btn:hover {
+  background-color: #9b6dff;
+  color: white;
+  /* background-color: rgb(116, 243, 137);
+  border: 1px solid rgba(43, 231, 10, 0.13);
+  transition: 0.3s; */
+}
+
+.footer {
+  font-family: 'Montserrat';
+  font-size: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9b6dff;
+  color: white;
+}

@@ -1,0 +1,20 @@
+<%- include('includes/head.ejs') %> <%- include('includes/nav.ejs') %>
+<main class="container">
+  <div class="products">
+    <% if (branches.length > 0) { %> <% branches.forEach((branch)=> { %>
+    <div class="product">
+      <h2 class="product__title"><%= branch.br_name %></h2>
+      <p class="product__price"><%= branch.br_owner %></p>
+      <div class="buttons">
+        <a class="detail-btn">Details</a>
+        <a href="#" class="detail-btn">Remove</a>
+        <a href="#" class="detail-btn">Update</a>
+      </div>
+    </div>
+    <% }) %> <% } else { %>
+    <h1>There's no branch...</h1>
+    <% } %>
+  </div>
+</main>
+
+<%- include('includes/end.ejs') %>

@@ -2,13 +2,13 @@
 <%- include('includes/nav.ejs') %>
 <main class="container">
     <div class="products">
-        <% if (products.length > 0) { %>
-            <% products.forEach((product)=> { %>
+        <% if (employees.length > 0) { %>
+            <% employees.forEach((employee)=> { %>
                 <div class="product">
-                    <img src="<%= product.pr_image ? `/img/${product.pr_image}` : '/img/product.jpg' %>"
-                         alt="<%= product.pr_name %>"/>
-                    <h2 class="product__title"><%= product.pr_name %></h2>
-                    <p class="product__price"><%= product.pr_price %></p>
+                    <img class="user-profile" src="<%= employee.em_photo ? `/img/${employee.em_photo}` : '/img/user-profile.png' %>"
+                         alt="<%= employee.em_name %>"/>
+                    <h2 class="product__title"><%= employee.em_name %> <%= employee.em_lastname%></h2>
+                    <p class="product__price"><%= employee.em_role %></p>
                     <div class="buttons">
                         <a class="detail-btn">Details</a>
                         <a href="#" class="detail-btn">Remove</a>
@@ -17,7 +17,7 @@
                 </div>
             <% }) %>
         <% } else { %>
-            <h1>There's no products...</h1>
+            <h1>There's no employee...</h1>
         <% } %>
     </div>
 </main>

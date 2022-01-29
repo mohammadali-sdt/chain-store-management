@@ -1,0 +1,19 @@
+<%- include('includes/head.ejs') %> <%- include('includes/nav.ejs') %>
+<main class="container">
+  <div class="products">
+    <% if (stocks.length > 0) { %> <% stocks.forEach((stock)=> { %>
+    <div class="product">
+      <h2 class="product__title"><%= stock.st_name %></h2>
+      <p class="product__price"><%= stock.st_capacity %></p>
+      <div class="buttons">
+        <a class="detail-btn">Details</a>
+        <a href="#" class="detail-btn">Remove</a>
+        <a href="#" class="detail-btn">Update</a>
+      </div>
+    </div>
+    <% }) %> <% } else { %>
+    <h1>There's no stocks...</h1>
+    <% } %>
+  </div>
+</main>
+<%- include('includes/end.ejs') %>

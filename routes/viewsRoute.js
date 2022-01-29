@@ -4,5 +4,7 @@ const router = express.Router();
 
 router.route("/").get(viewsController.getHomePage);
 router.route("/employee").get(viewsController.showEmployees);
+router.route("/branch").get(viewsController.showBranchs);
+router.route("/stock").get(viewsController.showStocks);
 
 module.exports = router;

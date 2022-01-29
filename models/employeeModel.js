@@ -74,6 +74,10 @@ const employeeSchema = new mongoose.Schema(
         message: "Passwords are not the same!",
       },
     },
+    em_photo: {
+      type: String,
+      default: "user-profile.png",
+    },
     em_address: {
       type: addressSchema,
       required: [true, "A employee must have address"],

@@ -1,58 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <nav class="nav">
-      <a href="/">Home</a>
-      <a href="/index.html" class="product-btn">Add Product</a>
-      <a href="/index.html">Add Employee</a>
-      <a href="/index.html">Add Branch</a>
-      <a href="/index.html">Add Stock</a>
-    </nav>
-
-    <form action="." method="POST" class="form-border">
-      <div class="form-field">
+<%- include('includes/head.ejs') %>
+<%- include('includes/nav.ejs') %>
+<form action="." method="POST" class="form-border">
+    <div class="form-field">
         <label for="name">Name:</label>
-        <input type="text" placeholder="Your Name" />
-      </div>
+        <input type="text" placeholder="Your Name"/>
+    </div>
 
-      <div class="form-field">
+    <div class="form-field">
         <label for="Lastname">Lastname:</label>
-        <input type="text" placeholder="Your LastName" />
-      </div>
+        <input type="text" placeholder="Your LastName"/>
+    </div>
 
-      <div class="form-field role">
+    <div class="form-field role">
         <label for="cars"> Role:</label>
         <select name="role" id="cars">
-          <option value="" selected disabled hidden>Choose here</option>
-          <option value="customer">customer</option>
-          <option value="admin">admin</option>
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="customer">customer</option>
+            <option value="admin">admin</option>
         </select>
-      </div>
+    </div>
 
-      <div class="form-field branch">
+    <div class="form-field branch">
         <label for="branch"> Branch:</label>
         <select name="role" id="cars">
-          <option value="" selected disabled hidden>Choose here</option>
-          <option value="bushehr">bushehr</option>
-          <option value="shiraz">shiraz</option>
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="bushehr">bushehr</option>
+            <option value="shiraz">shiraz</option>
         </select>
-      </div>
-      <div class="button-div">
+    </div>
+    <div class="button-div">
         <button class="button" type="submit">Add Product</button>
-      </div>
-    </form>
-  </body>
-</html>
+    </div>
+</form>
+<%- include('includes/end.ejs') %>

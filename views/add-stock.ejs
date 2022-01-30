@@ -1,0 +1,66 @@
+<%- include('includes/head.ejs') %>
+<%- include('includes/nav.ejs') %>
+<form class="form-border form-add-stock">
+    <div class="form-field">
+        <label for="name">Name:</label>
+        <input required type="text" id="name" name="name" placeholder="Name"/>
+    </div>
+
+    <div class="form-field">
+        <label for="capacity">Capacity:</label>
+        <input required type="number" id="capacity" name="capacity" placeholder="Capacity"/>
+    </div>
+
+    <div class="form-field">
+        <label for="phone">Phone:</label>
+        <input required type="tel" id="phone" name="phone" placeholder="Phone"/>
+    </div>
+
+    <div class="form-field">
+        <label for="city">City:</label>
+        <input required type="text" id="city" name="city" placeholder="City"/>
+    </div>
+
+    <div class="form-field">
+        <label for="street">Street:</label>
+        <input required type="text" id="street" name="street" placeholder="Street"/>
+    </div>
+
+    <div class="form-field">
+        <label for="alley">Alley:</label>
+        <input required type="text" id="alley" name="alley" placeholder="Alley"/>
+    </div>
+
+    <div class="form-field">
+        <label for="pelaque">Pelaque:</label>
+        <input required type="number" id="pelaque" name="pelaque" placeholder="Pelaque"/>
+    </div>
+
+    <div class="form-field">
+        <label for="postal">Postal Code:</label>
+        <input required type="number" pattern="[0-9]{10}" id="postal" name="postal" placeholder="Postal Code"/>
+    </div>
+
+
+<!--    <div class="form-field role">-->
+<!--        <label for="cars"> Role:</label>-->
+<!--        <select name="role" id="cars">-->
+<!--            <option value="" selected disabled hidden>Choose here</option>-->
+<!--            <option value="customer">customer</option>-->
+<!--            <option value="admin">admin</option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+<!--    <div class="form-field branch">-->
+<!--        <label for="branch"> Branch:</label>-->
+<!--        <select name="role" id="cars">-->
+<!--            <option value="" selected disabled hidden>Choose here</option>-->
+<!--            <option value="bushehr">bushehr</option>-->
+<!--            <option value="shiraz">shiraz</option>-->
+<!--        </select>-->
+<!--    </div>-->
+    <div class="button-div">
+        <button class="button" type="submit">Add Stock</button>
+    </div>
+</form>
+<%- include('includes/end.ejs') %>

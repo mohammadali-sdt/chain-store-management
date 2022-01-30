@@ -38,3 +38,9 @@ exports.showStocks = catchAsync(async (req, res, next) => {
     stocks,
   });
 });
+
+exports.addStock = catchAsync(async (req, res, next) => {
+  res.status(200).render("add-stock", {
+    title: "Add Stock",
+  });
+});

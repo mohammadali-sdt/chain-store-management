@@ -7,5 +7,6 @@ router.route("/employee").get(viewsController.showEmployees);
 router.route("/branch").get(viewsController.showBranchs);
 router.route("/stock").get(viewsController.showStocks);
 router.route("/stock/add").get(viewsController.addStock);
+router.route("/branch/add").get(viewsController.addBranch);
 
 module.exports = router;

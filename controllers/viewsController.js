@@ -44,3 +44,9 @@ exports.addStock = catchAsync(async (req, res, next) => {
     title: "Add Stock",
   });
 });
+
+exports.addBranch = catchAsync(async (req, res, next) => {
+  res.status(200).render("add-branch", {
+    title: "Add Branch",
+  });
+});

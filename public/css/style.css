@@ -108,6 +108,15 @@ nav {
     font-weight: 600;
 }
 
+.checkbox-field{
+    margin-top: 1rem;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
 .form-field input {
     font-family: 'Montserrat';
     width: 25rem;
@@ -118,7 +127,11 @@ nav {
     border: 2px solid #9b6dff;
 }
 
-.role select {
+.checkbox-field input{
+    width: fit-content;
+}
+
+select {
     font-family: 'Montserrat';
     width: 25rem;
     padding: 0.5rem;
@@ -127,11 +140,11 @@ nav {
     border: 2px solid #9b6dff;
 }
 
-.role select {
+select {
     margin-top: 0.4rem;
 }
 
-.branch select {
+select {
     font-family: 'Montserrat';
     width: 25rem;
     padding: 0.5rem;
@@ -320,6 +333,10 @@ nav .home-btn {
     display: flex;
     flex-direction: column;
     /*gap: 1rem;*/
+}
+
+.hidden{
+    display: none;
 }
 
 @media screen and (max-width: 40.625em) {

@@ -1,0 +1,207 @@
+<%- include('includes/head.ejs') %> <%- include('includes/nav.ejs') %>
+<form class="form-border form-add-product">
+  <div class="form-field">
+    <label for="name">Name:</label>
+    <input required type="text" id="name" name="name" placeholder="Name" />
+  </div>
+
+  <div class="form-field">
+    <label for="brand">Brand:</label>
+    <input required type="text" id="brand" name="brand" placeholder="Brand" />
+  </div>
+
+  <div class="form-field">
+    <label for="barcode">Barcode:</label>
+    <input
+      required
+      type="number"
+      id="barcode"
+      pattern="[0-9]{12}"
+      name="barcode"
+      placeholder="Barcode"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="prdoction">Prdoction Date:</label>
+    <input
+      required
+      type="date"
+      id="prdoction"
+      name="prdoction"
+      placeholder="Prdoction"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="price">Price:</label>
+    <input
+      required
+      type="number"
+      id="price"
+      name="price"
+      placeholder="Price:"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="image">Image Url:</label>
+    <input
+      type="url"
+      id="image"
+      pattern="https://.*"
+      name="image"
+      placeholder="https..."
+    />
+  </div>
+
+  <div class="form-field catagory">
+    <label for="catagories"> Catagories:</label>
+    <select required name="catagories" id="catagories">
+      <option value="" selected disabled hidden>Choose here</option>
+      <option value="FoodStuff">FoodStuff</option>
+      <option value="HomeAppliance">HomeAppliance</option>
+      <option value="Stationery">Stationery</option>
+      <option value="Clothing">Clothing</option>
+    </select>
+  </div>
+
+  <div class="form-field food-form hidden">
+    <label for="fo_ep">Food Exp:</label>
+    <input
+      class="food-form__input"
+      disabled
+      required
+      type="date"
+      id="fo_ep"
+      name="fo_ep"
+      placeholder="Food Exp"
+    />
+    <label for="fo_weight">Weight:</label>
+    <input
+      class="food-form__input"
+      disabled
+      required
+      type="number"
+      id="fo_weight"
+      name="fo_weight"
+      placeholder="Food Weight"
+    />
+    <label for="fo_pack">Pack Type:</label>
+    <select
+      class="food-form__input"
+      disabled
+      required
+      name="fo_pack"
+      id="fo_pack"
+    >
+      <option value="" selected disabled hidden>Choose here</option>
+      <option value="plastic">Plastic</option>
+      <option value="pocket">Packet</option>
+    </select>
+  </div>
+
+  <div class="form-field home-form hidden">
+    <label for="ho_energy"> Energy Chart:</label>
+    <select
+      class="home-form__input"
+      disabled
+      required
+      name="ho_energy"
+      id="ho_energy"
+    >
+      <option value="" selected disabled hidden>Choose here</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="E">E</option>
+      <option value="F">F</option>
+      <option value="G">G</option>
+    </select>
+    <label for="ho_power">Power Range:</label>
+    <input
+      class="home-form__input"
+      disabled
+      required
+      type="number"
+      id="ho_power"
+      name="ho_power"
+      placeholder="Power Range"
+    />
+    <label for="ho_height">Height:</label>
+    <input
+      class="home-form__input"
+      disabled
+      required
+      type="number"
+      id="ho_height"
+      name="ho_height"
+      placeholder="Height"
+    />
+    <label for="ho_width">Width:</label>
+    <input
+      class="home-form__input"
+      disabled
+      required
+      type="number"
+      id="ho_width"
+      name="ho_width"
+      placeholder="Width"
+    />
+    <label for="ho_weight">Weight:</label>
+    <input
+      class="home-form__input"
+      disabled
+      required
+      type="number"
+      id="ho_weight"
+      name="ho_weight"
+      placeholder="Weight"
+    />
+  </div>
+
+  <div class="form-field sta-form hidden">
+    <label for="st_color">Color:</label>
+    <input
+      class="sta-form__input"
+      disabled
+      required
+      type="text"
+      id="st_color"
+      name="st_color"
+      placeholder="Color"
+    />
+  </div>
+  <div class="form-field cl-form hidden">
+    <label for="cl_size"> Size:</label>
+    <select
+      class="cl-form__input"
+      disabled
+      required
+      name="cl_size"
+      id="cl_size"
+    >
+      <option value="" selected disabled hidden>Choose here</option>
+      <option value="sm">sm</option>
+      <option value="md">md</option>
+      <option value="l">l</option>
+      <option value="xl">xl</option>
+      <option value="xxl">xxl</option>
+      <option value="xxxl">xxxl</option>
+    </select>
+  </div>
+
+  <!--    <div class="form-field branch">-->
+  <!--        <label for="branch"> Branch:</label>-->
+  <!--        <select name="role" id="cars">-->
+  <!--            <option value="" selected disabled hidden>Choose here</option>-->
+  <!--            <option value="bushehr">bushehr</option>-->
+  <!--            <option value="shiraz">shiraz</option>-->
+  <!--        </select>-->
+  <!--    </div>-->
+  <div class="button-div">
+    <button class="button" type="submit">Add Product</button>
+  </div>
+</form>
+<%- include('includes/end.ejs') %>

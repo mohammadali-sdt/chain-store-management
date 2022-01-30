@@ -56,3 +56,9 @@ exports.addEmployee = (req, res, next) => {
     title: "Add Employee",
   });
 };
+
+exports.addProduct = (req, res, next) => {
+  res.status(200).render("add-product", {
+    title: "Add Product",
+  });
+};

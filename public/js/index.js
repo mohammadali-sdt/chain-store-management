@@ -1,6 +1,7 @@
 import { addStock } from "./stock.js";
 import { addBranch } from "./branch.js";
 import { addEmployee } from "./employee.js";
+import { addProduct } from "./product.js";
 
 const addStockForm = document.querySelector(".form-add-stock");
 if (addStockForm) {
@@ -177,5 +178,144 @@ if (addEmployeeForm) {
     } catch (err) {
       console.log(err);
     }
+  });
+}
+
+const addProductForm = document.querySelector(".form-add-product");
+if (addProductForm) {
+  const catagoryInput = document.querySelector("#catagories");
+  const foodForm = document.querySelector(".food-form");
+  const homeForm = document.querySelector(".home-form");
+  const staForm = document.querySelector(".sta-form");
+  const clForm = document.querySelector(".cl-form");
+  const foodFormInputs = document.querySelectorAll(".food-form__input");
+  const homeFormInputs = document.querySelectorAll(".home-form__input");
+  const staFormInputs = document.querySelectorAll(".sta-form__input");
+  const clFormInputs = document.querySelectorAll(".cl-form__input");
+
+  catagoryInput.addEventListener("change", function () {
+    if (catagoryInput.value === "FoodStuff") {
+      foodFormInputs.forEach((el) => {
+        el.disabled = false;
+      });
+      homeFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      staFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      clFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      foodForm.classList.remove("hidden");
+      homeForm.classList.add("hidden");
+      staForm.classList.add("hidden");
+      clForm.classList.add("hidden");
+    } else if (catagoryInput.value === "HomeAppliance") {
+      homeFormInputs.forEach((el) => {
+        el.disabled = false;
+      });
+      foodFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      staFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      clFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      homeForm.classList.remove("hidden");
+      foodForm.classList.add("hidden");
+      staForm.classList.add("hidden");
+      clForm.classList.add("hidden");
+    } else if (catagoryInput.value === "Stationery") {
+      staFormInputs.forEach((el) => {
+        el.disabled = false;
+      });
+      foodFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      clFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      homeFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      staForm.classList.remove("hidden");
+      foodForm.classList.add("hidden");
+      clForm.classList.add("hidden");
+      homeForm.classList.add("hidden");
+    } else if (catagoryInput.value === "Clothing") {
+      clFormInputs.forEach((el) => {
+        el.disabled = false;
+      });
+      foodFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      homeFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      staFormInputs.forEach((el) => {
+        el.disabled = true;
+      });
+      clForm.classList.remove("hidden");
+      foodForm.classList.add("hidden");
+      staForm.classList.add("hidden");
+      homeForm.classList.add("hidden");
+    }
+  });
+
+  addProductForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const brand = form.get("brand");
+    const barcode = form.get("barcode");
+    const prdoction = form.get("prdoction");
+    const price = form.get("price");
+    const image = form.get("image");
+    const fo_ep = form.get("fo_ep");
+    const fo_weight = form.get("fo_weight");
+    const fo_pack = form.get("fo_pack");
+    const ho_energy = form.get("ho_energy");
+    const ho_power = form.get("ho_power");
+    const ho_height = form.get("ho_height");
+    const ho_width = form.get("ho_width");
+    const ho_weight = form.get("ho_weight");
+    const st_color = form.get("st_color");
+    const cl_size = form.get("cl_size");
+    let url;
+
+    const data = {
+      pr_name: name,
+      pr_brand: brand,
+      pr_price: price,
+      pr_barcode: barcode,
+      pr_pd: prdoction,
+      pr_image: image ? image : "product.jpg",
+    };
+
+    if (catagoryInput.value === "FoodStuff") {
+      data["fo_ep"] = fo_ep;
+      data["fo_weight"] = fo_weight;
+      data["fo_packType"] = fo_pack;
+      url = "/api/v1/product/foodstuff";
+    } else if (catagoryInput.value === "HomeAppliance") {
+      (data["ho_energyCh"] = ho_energy), (data["ho_power"] = ho_power);
+      data["ho_height"] = ho_height;
+      data["ho_width"] = ho_width;
+      data["ho_weight"] = ho_weight;
+      url = "/api/v1/product/homeappliance";
+    } else if (catagoryInput.value === "Stationery") {
+      data["sta_color"] = st_color;
+      url = "/api/v1/product/stationery";
+    } else if (catagoryInput.value === "Clothing") {
+      data["cl_size"] = cl_size;
+      url = "/api/v1/product/clothing";
+    }
+
+    await addProduct(url, data);
+    addProductForm.reset();
+    alert("Your Product added successfully!");
   });
 }

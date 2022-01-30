@@ -1,0 +1,144 @@
+<%- include('includes/head.ejs') %> <%- include('includes/nav.ejs') %>
+<form class="form-border form-add-employee">
+    <div class="form-field">
+        <label for="name">Name:</label>
+        <input required type="text" id="name" name="name" placeholder="Name"/>
+    </div>
+
+    <div class="form-field">
+        <label for="lastname">Lastname:</label>
+        <input required type="text" id="lastname" name="lastname" placeholder="Lastname"/>
+    </div>
+
+    <div class="form-field">
+        <label for="father">FatherName:</label>
+        <input required type="text" id="father" name="father" placeholder="FatherName"/>
+    </div>
+
+    <div class="form-field">
+        <label for="phone">Phone:</label>
+        <input required type="tel" id="phone" name="phone" placeholder="Phone"/>
+    </div>
+
+    <div class="form-field">
+        <label for="id">Id:</label>
+        <input required pattern="[0-9]{10}" type="number" id="id" name="id" placeholder="Id"/>
+    </div>
+
+    <div class="form-field">
+        <label for="naid">National Id:</label>
+        <input required type="number" id="naid" name="naid" placeholder="National Id:"/>
+    </div>
+
+    <div class="form-field">
+        <label for="birth">Brith Date:</label>
+        <input required type="date" id="birth" name="birth" placeholder="Brith Date:"/>
+    </div>
+
+    <div class="form-field">
+        <label for="personnel">Personnel Code:</label>
+        <input required pattern="[0-9]{9}" type="number" id="personnel" name="personnel" placeholder="Personnel Code:"/>
+    </div>
+
+    <div class="form-field">
+        <label for="password">Password:</label>
+        <input required type="password" id="password" name="password" placeholder="••••••••"/>
+    </div>
+
+    <div class="form-field">
+        <label for="password2">Password Confirm:</label>
+        <input required type="password" id="password2" name="password2" placeholder="••••••••"/>
+    </div>
+
+    <div class="form-field">
+        <label for="city">City:</label>
+        <input required type="text" id="city" name="city" placeholder="City"/>
+    </div>
+
+    <div class="form-field">
+        <label for="street">Street:</label>
+        <input
+                required
+                type="text"
+                id="street"
+                name="street"
+                placeholder="Street"
+        />
+    </div>
+
+    <div class="form-field">
+        <label for="alley">Alley:</label>
+        <input required type="text" id="alley" name="alley" placeholder="Alley"/>
+    </div>
+
+    <div class="form-field">
+        <label for="pelaque">Pelaque:</label>
+        <input
+                required
+                type="number"
+                id="pelaque"
+                name="pelaque"
+                placeholder="Pelaque"
+        />
+    </div>
+
+    <div class="form-field">
+        <label for="postal">Postal Code:</label>
+        <input
+                required
+                type="number"
+                pattern="[0-9]{10}"
+                id="postal"
+                name="postal"
+                placeholder="Postal Code"
+        />
+    </div>
+
+    <div class="form-field role">
+        <label for="roles"> Role:</label>
+        <select required name="roles" id="roles">
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="branch">Branch</option>
+            <option value="stock">Stock</option>
+            <option value="central">Central</option>
+        </select>
+    </div>
+
+    <div class="form-field brem-form hidden">
+        <label for="brem_work">Branch Id:</label>
+        <input class="brem-form__input" disabled required type="text" id="brem_work" name="brem_work" placeholder="Branch Id"/>
+        <label for="brem_employ">Employment Date:</label>
+        <input class="brem-form__input" disabled required type="date" id="brem_employ" name="brem_employ" placeholder="Employment Date:"/>
+    </div>
+
+    <div class="form-field stem-form hidden">
+        <label for="stem_work">Stock Id:</label>
+        <input class="stem-form__input" disabled required type="text" id="stem_work" name="stem_work" placeholder="Stock Id"/>
+        <label  for="stem_employ">Employment Date:</label>
+        <input class="stem-form__input" disabled required type="date" id="stem_employ" name="stem_employ" placeholder="Employment Date:"/>
+        <label for="section"> Section:</label>
+        <select class="stem-form__input" disabled required name="section" id="section">
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="storage">Storage</option>
+            <option value="publish">Publish</option>
+        </select>
+        <div class="checkbox-field">
+            <label for="manager">Is Manager</label>
+            <input type="checkbox" id="manager" name="manager" value="True"/>
+        </div>
+    </div>
+
+
+    <!--    <div class="form-field branch">-->
+    <!--        <label for="branch"> Branch:</label>-->
+    <!--        <select name="role" id="cars">-->
+    <!--            <option value="" selected disabled hidden>Choose here</option>-->
+    <!--            <option value="bushehr">bushehr</option>-->
+    <!--            <option value="shiraz">shiraz</option>-->
+    <!--        </select>-->
+    <!--    </div>-->
+    <div class="button-div">
+        <button class="button" type="submit">Add Employee</button>
+    </div>
+</form>
+<%- include('includes/end.ejs') %>

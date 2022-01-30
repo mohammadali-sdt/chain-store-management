@@ -46,6 +46,7 @@ const employeeSchema = new mongoose.Schema(
       minLength: [1, "A id must have 1 digits"],
       maxLength: [10, "A phone must have 10 digits"],
       required: [true, "A employee must have a id"],
+      unique: false,
     },
     em_brithDate: {
       type: Date,

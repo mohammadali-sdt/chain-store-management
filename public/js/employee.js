@@ -1,8 +1,8 @@
-export const addStock = async function (data) {
+export const addEmployee = async (url, data) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "/api/v1/stock/",
+      url,
       data,
     });
   } catch (err) {

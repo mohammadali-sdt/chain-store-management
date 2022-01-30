@@ -50,3 +50,9 @@ exports.addBranch = catchAsync(async (req, res, next) => {
     title: "Add Branch",
   });
 });
+
+exports.addEmployee = (req, res, next) => {
+  res.status(200).render("add-employee", {
+    title: "Add Employee",
+  });
+};

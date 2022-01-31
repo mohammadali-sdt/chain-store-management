@@ -4,9 +4,13 @@ const catchAsync = require("../utils/catchAsync");
 
 exports.getAllProducts = genericCrud.getAll(productModel.Product);
 exports.createStationery = genericCrud.createOne(productModel.Stationery);
+exports.updateStationery = genericCrud.updateOne(productModel.Stationery);
 exports.createClothing = genericCrud.createOne(productModel.Clothing);
+exports.updateClothing = genericCrud.updateOne(productModel.Clothing);
 exports.createFoodstuff = genericCrud.createOne(productModel.Foodstuff);
+exports.updateFoodstuff = genericCrud.updateOne(productModel.Foodstuff);
 exports.createHomeAppliance = genericCrud.createOne(productModel.HomeAppliance);
+exports.updateHomeAppliance = genericCrud.updateOne(productModel.HomeAppliance);
 
 exports.getAllFoods = genericCrud.getAll(productModel.Foodstuff);
 

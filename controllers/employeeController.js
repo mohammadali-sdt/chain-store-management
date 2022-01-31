@@ -8,12 +8,21 @@ exports.deleteEmployee = genericCrud.deleteOne(employeeModel.Employee);
 exports.createStockEmployee = genericCrud.createOne(
   employeeModel.StockEmployee
 );
+exports.updateStockEmployee = genericCrud.updateOne(
+  employeeModel.StockEmployee
+);
 
 exports.createBranchEmployee = genericCrud.createOne(
   employeeModel.BranchEmployee
 );
+exports.updateBranchEmployee = genericCrud.updateOne(
+  employeeModel.BranchEmployee
+);
 
 exports.createCentralEmployee = genericCrud.createOne(
+  employeeModel.CentralEmployee
+);
+exports.updateCentralEmployee = genericCrud.updateOne(
   employeeModel.CentralEmployee
 );
 

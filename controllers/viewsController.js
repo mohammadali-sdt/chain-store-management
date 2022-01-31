@@ -78,3 +78,19 @@ exports.updateBranch = catchAsync(async (req, res, next) => {
     branch,
   });
 });
+
+exports.updateEmployee = catchAsync(async (req, res, next) => {
+  const employee = await employeeModel.Employee.findById(req.params.id);
+  res.status(200).render("update-employee", {
+    title: "Update Employee",
+    employee,
+  });
+});
+
+exports.updateProduct = catchAsync(async (req, res, next) => {
+  const product = await productModel.Product.findById(req.params.id);
+  res.status(200).render("update-product", {
+    title: "Update Product",
+    product,
+  });
+});

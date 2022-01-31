@@ -1,7 +1,7 @@
 import { addStock, deleteStock, updateStock } from "./stock.js";
 import { addBranch, deleteBranch, updateBranch } from "./branch.js";
-import { addEmployee, deleteEmployee } from "./employee.js";
-import { addProduct, deleteProduct } from "./product.js";
+import { addEmployee, deleteEmployee, updateEmployee } from "./employee.js";
+import { addProduct, deleteProduct, updateProduct } from "./product.js";
 
 const addStockForm = document.querySelector(".form-add-stock");
 if (addStockForm) {
@@ -145,7 +145,7 @@ if (addEmployeeForm) {
         em_lastname: lastname,
         em_fatherName: father,
         em_phone: phone,
-        em_photo: image,
+        em_photo: image ? image : "user-profile.png",
         em_id: id,
         em_naid: naid,
         em_brithDate: birth,
@@ -423,7 +423,7 @@ if (updateStockForm) {
     location.reload();
   });
 }
-
+// update branch
 const updateBranchForm = document.querySelector(".form-update-branch");
 if (updateBranchForm) {
   updateBranchForm.addEventListener("submit", async function (e) {
@@ -454,6 +454,144 @@ if (updateBranchForm) {
       location.reload();
     } catch (err) {
       console.error(err);
+    }
+  });
+}
+
+// update Employee
+const updateEmployeeForm = document.querySelector(".form-update-employee");
+if (updateEmployeeForm) {
+  updateEmployeeForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const roleInput = document.querySelector('input[name="role"]').dataset.role;
+    const name = form.get("name");
+    const lastname = form.get("lastname");
+    const father = form.get("father");
+    const phone = form.get("phone");
+    const image = form.get("image");
+    const id = form.get("id");
+    const naid = form.get("naid");
+    const personnel = form.get("personnel");
+    const city = form.get("city");
+    const street = form.get("street");
+    const alley = form.get("alley");
+    const pelaque = form.get("pelaque");
+    const postalCode = form.get("postal");
+    let url;
+    //
+    const data = {
+      em_name: name,
+      em_lastname: lastname,
+      em_fatherName: father,
+      em_phone: phone,
+      em_photo: image ? image : "user-profile.png",
+      em_id: id,
+      em_naid: naid,
+      em_personnelCode: personnel,
+      em_address: {
+        city,
+        street,
+        alley,
+        pelaque,
+        postalCode,
+      },
+    };
+    if (form.get("birth")) {
+      console.log(form.get("brith"));
+      data["em_brithDate"] = form.get("brith");
+    }
+    if (roleInput === "branch") {
+      data["brem_work"] = form.get("brem_work");
+      if (form.get("brem_employ")) {
+        data["brem_employmentDate"] = form.get("brem_employ");
+      }
+      url = "/api/v1/employee/branch";
+    } else if (roleInput === "stock") {
+      data["stem_work"] = form.get("stem_work");
+      if (form.get("stem_employ")) {
+        data["stem_employmentDate"] = form.get("stem_employ");
+      }
+      data["stem_section"] = form.get("section");
+      data["stem_manager"] = form.get("manager") === "True";
+      url = "/api/v1/employee/stock";
+    } else {
+      url = "/api/v1/employee/central";
+    }
+    // console.log(data);
+    try {
+      await updateEmployee(updateEmployeeForm.dataset.employee, data, url);
+      // location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}
+
+// Update Product
+const updateProductForm = document.querySelector(".form-update-product");
+if (updateProductForm) {
+  updateProductForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const category = document.querySelector('input[name="category"]').dataset
+      .category;
+    const name = form.get("name");
+    const brand = form.get("brand");
+    const barcode = form.get("barcode");
+    const prdoction = form.get("prdoction");
+    const price = form.get("price");
+    const image = form.get("image");
+    const fo_ep = form.get("fo_ep");
+    const fo_weight = form.get("fo_weight");
+    const fo_pack = form.get("fo_pack");
+    const ho_energy = form.get("ho_energy");
+    const ho_power = form.get("ho_power");
+    const ho_height = form.get("ho_height");
+    const ho_width = form.get("ho_width");
+    const ho_weight = form.get("ho_weight");
+    const st_color = form.get("st_color");
+    const cl_size = form.get("cl_size");
+    let url;
+
+    const data = {
+      pr_name: name,
+      pr_brand: brand,
+      pr_price: price,
+      pr_barcode: barcode,
+      pr_image: image ? image : "product.jpg",
+    };
+    if (prdoction) {
+      data["pr_pd"] = prdoction;
+    }
+
+    if (category === "Foodstuff") {
+      if (fo_ep) {
+        data["fo_ep"] = fo_ep;
+      }
+      data["fo_weight"] = fo_weight;
+      data["fo_packType"] = fo_pack;
+      url = "/api/v1/product/foodstuff";
+    } else if (category === "HomeAppliance") {
+      data["ho_energyCh"] = ho_energy;
+      data["ho_powerRange"] = ho_power;
+      data["ho_height"] = ho_height;
+      data["ho_width"] = ho_width;
+      data["ho_weight"] = ho_weight;
+      url = "/api/v1/product/homeappliance";
+    } else if (category === "Stationery") {
+      data["sta_color"] = st_color;
+      url = "/api/v1/product/stationery";
+    } else if (category === "Clothing") {
+      data["cl_size"] = cl_size;
+      url = "/api/v1/product/clothing";
+    }
+
+    try {
+      await updateProduct(updateProductForm.dataset.product, data, url);
+      // location.reload();
+    } catch (err) {
+      console.log(err);
     }
   });
 }

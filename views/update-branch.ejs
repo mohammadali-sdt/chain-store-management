@@ -1,0 +1,48 @@
+<%- include('includes/head.ejs') %>
+<%- include('includes/nav.ejs') %>
+<form class="form-border form-update-branch" data-branch="<%= branch._id %>">
+    <div class="form-field">
+        <label for="name">Name:</label>
+        <input value="<%= branch.br_name %>" type="text" id="name" name="name" placeholder="Name"/>
+    </div>
+
+    <div class="form-field">
+        <label for="owner">owner:</label>
+        <input value="<%= branch.br_owner %>" type="text" id="owner" name="owner" placeholder="Owner"/>
+    </div>
+
+    <div class="form-field">
+        <label for="phone">Phone:</label>
+        <input value="<%= branch.br_phone %>" pattern="[0-9]{11}" type="tel" id="phone" name="phone" placeholder="Phone"/>
+    </div>
+
+    <div class="form-field">
+        <label for="city">City:</label>
+        <input value="<%= branch.br_address.city %>" type="text" id="city" name="city" placeholder="City"/>
+    </div>
+
+    <div class="form-field">
+        <label for="street">Street:</label>
+        <input value="<%= branch.br_address.street %>" type="text" id="street" name="street" placeholder="Street"/>
+    </div>
+
+    <div class="form-field">
+        <label for="alley">Alley:</label>
+        <input value="<%= branch.br_address.alley %>" type="text" id="alley" name="alley" placeholder="Alley"/>
+    </div>
+
+    <div class="form-field">
+        <label for="pelaque">Pelaque:</label>
+        <input value="<%= branch.br_address.pelaque %>" type="number" id="pelaque" name="pelaque" placeholder="Pelaque"/>
+    </div>
+
+    <div class="form-field">
+        <label for="postal">Postal Code:</label>
+        <input value="<%= branch.br_address.postalCode %>" type="tel" pattern="[0-9]{10}" id="postal" name="postal" placeholder="Postal Code"/>
+    </div>
+
+    <div class="button-div">
+        <button class="button" type="submit">Update Branch</button>
+    </div>
+</form>
+<%- include('includes/end.ejs') %>

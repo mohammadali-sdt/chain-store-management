@@ -11,5 +11,6 @@ router.route("/branch/add").get(viewsController.addBranch);
 router.route("/employee/add").get(viewsController.addEmployee);
 router.route("/product/add").get(viewsController.addProduct);
 router.route("/stock/update/:id").get(viewsController.updateStock);
+router.route("/branch/update/:id").get(viewsController.updateBranch);
 
 module.exports = router;

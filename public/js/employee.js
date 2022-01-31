@@ -5,6 +5,9 @@ export const addEmployee = async (url, data) => {
       url,
       data,
     });
+    if (res.data.status === "success") {
+      alert("Employee added successfully!");
+    }
   } catch (err) {
     console.log(err.response.data.message);
   }
@@ -16,6 +19,9 @@ export const deleteEmployee = async function (id) {
       method: "DELETE",
       url: `/api/v1/employee/${id}`,
     });
+    if (res.data.status === "success") {
+      alert("Employee deleted successfully!");
+    }
   } catch (err) {
     console.log(err.response.data.message);
   }

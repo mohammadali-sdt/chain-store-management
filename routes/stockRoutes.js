@@ -8,6 +8,8 @@ router
   .get(stockController.getAllStock)
   .post(stockController.createStock);
 
+router.route("/:id").delete(stockController.deleteStock);
+
 router.route("/:city").get(stockController.getStocksByCity);
 
 router.route("/max/capacity").get(stockController.getStockWithMaxCap);

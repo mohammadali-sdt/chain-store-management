@@ -5,6 +5,7 @@ const catchAsync = require("../utils/catchAsync");
 exports.getAllBranches = genericCrud.getAll(Branch);
 
 exports.createBranch = genericCrud.createOne(Branch);
+exports.deleteBranch = genericCrud.deleteOne(Branch);
 
 exports.getBranchsByCity = catchAsync(async (req, res, next) => {
   const branchs = await Branch.find({ "br_address.city": req.params.city });

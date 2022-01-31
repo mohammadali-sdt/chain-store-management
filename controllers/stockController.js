@@ -6,6 +6,8 @@ exports.getAllStock = genericCrud.getAll(Stock);
 
 exports.createStock = genericCrud.createOne(Stock);
 
+exports.deleteStock = genericCrud.deleteOne(Stock);
+
 exports.getStocksByCity = catchAsync(async (req, res, next) => {
   console.log(req.params);
   const stocks = await Stock.find({ "st_address.city": req.params.city });
@@ -30,11 +32,11 @@ exports.getStockWithMaxCap = catchAsync(async (req, res, next) => {
     {
       $sort: {
         maxCapacity: -1,
-      }
+      },
     },
     {
       $limit: 1,
-    }
+    },
   ]);
 
   // const stock = await Stock.find().sort({st_capacity: -1}).limit(1);

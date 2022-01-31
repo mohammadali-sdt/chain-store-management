@@ -5,7 +5,7 @@
         <% if (employees.length > 0) { %>
             <% employees.forEach((employee)=> { %>
                 <div class="product">
-                    <img class="user-profile" src="<%= employee.em_photo ? `/img/${employee.em_photo}` : '/img/user-profile.png' %>"
+                    <img class="user-profile" crossorigin="anonymous" src="<%= employee.em_photo === `user-profile.png` ? `img/user-profile.png` : employee.em_photo %>"
                          alt="<%= employee.em_name %>"/>
                     <h2 class="product__title"><%= employee.em_name %> <%= employee.em_lastname%></h2>
                     <p class="product__price"><%= employee.em_role %></p>

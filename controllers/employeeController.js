@@ -3,6 +3,7 @@ const genericCrud = require("./genericCrud");
 const catchAsync = require("../utils/catchAsync");
 
 exports.getAllEmployee = genericCrud.getAll(employeeModel.Employee);
+exports.deleteEmployee = genericCrud.deleteOne(employeeModel.Employee);
 
 exports.createStockEmployee = genericCrud.createOne(
   employeeModel.StockEmployee

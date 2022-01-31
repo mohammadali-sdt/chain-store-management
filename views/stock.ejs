@@ -1,13 +1,13 @@
 <%- include('includes/head.ejs') %> <%- include('includes/nav.ejs') %>
 <main class="container">
-  <div class="products">
+  <div class="products stocks">
     <% if (stocks.length > 0) { %> <% stocks.forEach((stock)=> { %>
-    <div class="product">
+    <div data-stock="<%= stock._id%>" class="product stock">
       <h2 class="product__title"><%= stock.st_name %></h2>
       <p class="product__price"><%= stock.st_capacity %></p>
       <div class="buttons">
         <a class="detail-btn">Details</a>
-        <a href="#" class="detail-btn">Remove</a>
+        <a href="#" class="detail-btn detail-btn__remove">Remove</a>
         <a href="#" class="detail-btn">Update</a>
       </div>
     </div>

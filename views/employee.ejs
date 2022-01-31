@@ -1,17 +1,17 @@
 <%- include('includes/head.ejs') %>
 <%- include('includes/nav.ejs') %>
 <main class="container">
-    <div class="products">
+    <div class="products employees">
         <% if (employees.length > 0) { %>
             <% employees.forEach((employee)=> { %>
-                <div class="product">
+                <div data-employee="<%= employee._id %>" class="product">
                     <img class="user-profile" crossorigin="anonymous" src="<%= employee.em_photo === `user-profile.png` ? `img/user-profile.png` : employee.em_photo %>"
                          alt="<%= employee.em_name %>"/>
                     <h2 class="product__title"><%= employee.em_name %> <%= employee.em_lastname%></h2>
                     <p class="product__price"><%= employee.em_role %></p>
                     <div class="buttons">
                         <a class="detail-btn">Details</a>
-                        <a href="#" class="detail-btn">Remove</a>
+                        <a href="#" class="detail-btn detail-btn__remove">Remove</a>
                         <a href="#" class="detail-btn">Update</a>
                     </div>
                 </div>

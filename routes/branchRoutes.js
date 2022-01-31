@@ -8,6 +8,8 @@ router
   .get(branchController.getAllBranches)
   .post(branchController.createBranch);
 
+router.route("/:id").delete(branchController.deleteBranch);
+
 router.route("/:city").get(branchController.getBranchsByCity);
 
 module.exports = router;

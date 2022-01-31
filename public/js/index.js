@@ -1,6 +1,6 @@
-import { addStock } from "./stock.js";
-import { addBranch } from "./branch.js";
-import { addEmployee } from "./employee.js";
+import { addStock, deleteStock } from "./stock.js";
+import { addBranch, deleteBranch } from "./branch.js";
+import { addEmployee, deleteEmployee } from "./employee.js";
 import { addProduct } from "./product.js";
 
 const addStockForm = document.querySelector(".form-add-stock");
@@ -113,6 +113,7 @@ if (addEmployeeForm) {
       const lastname = form.get("lastname");
       const father = form.get("father");
       const phone = form.get("phone");
+      const image = form.get("image");
       const id = form.get("id");
       const naid = form.get("naid");
       const birth = form.get("birth");
@@ -146,6 +147,7 @@ if (addEmployeeForm) {
         em_lastname: lastname,
         em_fatherName: father,
         em_phone: phone,
+        em_photo: image,
         em_id: id,
         em_naid: naid,
         em_brithDate: birth,
@@ -301,7 +303,8 @@ if (addProductForm) {
       data["fo_packType"] = fo_pack;
       url = "/api/v1/product/foodstuff";
     } else if (catagoryInput.value === "HomeAppliance") {
-      (data["ho_energyCh"] = ho_energy), (data["ho_power"] = ho_power);
+      data["ho_energyCh"] = ho_energy;
+      data["ho_powerRange"] = ho_power;
       data["ho_height"] = ho_height;
       data["ho_width"] = ho_width;
       data["ho_weight"] = ho_weight;
@@ -317,5 +320,55 @@ if (addProductForm) {
     await addProduct(url, data);
     addProductForm.reset();
     alert("Your Product added successfully!");
+  });
+}
+
+// Delete Stock
+const stocks = document.querySelector(".stocks");
+if (stocks) {
+  stocks.addEventListener("click", async function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("detail-btn__remove")) {
+      const stockId = e.target.parentNode.parentNode.dataset.stock;
+      try {
+        await deleteStock(stockId);
+        location.reload();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  });
+}
+
+// Delete Branch
+const branches = document.querySelector(".branches");
+if (branches) {
+  branches.addEventListener("click", async function (e) {
+    if (e.target.classList.contains("detail-btn__remove")) {
+      const branchId = e.target.parentNode.parentNode.dataset.branch;
+      try {
+        await deleteBranch(branchId);
+        location.reload();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  });
+}
+
+// Delete Employee
+const employees = document.querySelector(".employees");
+if (employees) {
+  employees.addEventListener("click", async function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("detail-btn__remove")) {
+      const employeeId = e.target.parentNode.parentNode.dataset.employee;
+      try {
+        await deleteEmployee(employeeId);
+        location.reload();
+      } catch (err) {
+        console.log(err);
+      }
+    }
   });
 }

@@ -1,0 +1,195 @@
+<%- include('includes/head.ejs') %> <%- include('includes/nav.ejs') %>
+<form class="form-border form-update-product" data-product="<%= product._id %>">
+    <div class="form-field">
+        <label for="name">Name:</label>
+        <input value="<%= product.pr_name %>" type="text" id="name" name="name" placeholder="Name"/>
+    </div>
+
+    <div class="form-field">
+        <label for="brand">Brand:</label>
+        <input value="<%= product.pr_brand %>" type="text" id="brand" name="brand" placeholder="Brand"/>
+    </div>
+
+    <div class="form-field">
+        <label for="barcode">Barcode:</label>
+        <input
+                value="<%= product.pr_barcode %>"
+                type="text"
+                id="barcode"
+                pattern="[0-9]{12}"
+                name="barcode"
+                placeholder="Barcode"
+        />
+    </div>
+
+    <div class="form-field">
+        <label for="prdoction">Prdoction Date:</label>
+        <input
+                type="date"
+                id="prdoction"
+                name="prdoction"
+                placeholder="Prdoction"
+        />
+    </div>
+
+    <div class="form-field">
+        <label for="price">Price:</label>
+        <input
+                value="<%= product.pr_price %>"
+                type="number"
+                id="price"
+                name="price"
+                placeholder="Price:"
+        />
+    </div>
+
+    <div class="form-field">
+        <label for="image">Image Url:</label>
+        <input
+                type="url"
+                id="image"
+                pattern="https://.*"
+                name="image"
+                value="<%= product.pr_image === 'product.jpg' ? '' : product.pr_image %>"
+                placeholder="https..."
+        />
+    </div>
+
+    <div class="form-field catagory">
+        <label for="category"> Catagories:</label>
+        <input required name="category" id="category" disabled data-category="<%= product.pr_category %>"
+               value="<%= product.pr_category %>">
+    </div>
+
+    <% if (product.pr_category === 'Foodstuff') { %>
+        <div class="form-field food-form">
+            <label for="fo_ep">Food Exp:</label>
+            <input
+                    class="food-form__input"
+                    type="date"
+                    id="fo_ep"
+                    name="fo_ep"
+                    placeholder="Food Exp"
+            />
+            <label for="fo_weight">Weight:</label>
+            <input
+                    class="food-form__input"
+                    value="<%= product.fo_weight %>"
+                    type="number"
+                    id="fo_weight"
+                    name="fo_weight"
+                    placeholder="Food Weight"
+            />
+            <label for="fo_pack">Pack Type:</label>
+            <select
+                    class="food-form__input"
+                    name="fo_pack"
+                    id="fo_pack"
+            >
+                <% if (product.fo_packType === 'plastic') { %>
+                    <option selected value="plastic">Plastic</option>
+                    <option value="pocket">Packet</option>
+                <% } else { %>
+                    <option value="plastic">Plastic</option>
+                    <option selected value="pocket">Packet</option>
+                <% } %>
+            </select>
+        </div>
+    <% } %>
+
+    <% if (product.pr_category === 'HomeAppliance') { %>
+        <div class="form-field home-form">
+            <label for="ho_energy"> Energy Chart:</label>
+            <select
+                    required
+                    class="home-form__input"
+                    name="ho_energy"
+                    id="ho_energy"
+            >
+                <option value="" selected disabled hidden>Choose here</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+            </select>
+            <label for="ho_power">Power Range:</label>
+            <input
+                    class="home-form__input"
+                    value="<%= product.ho_powerRange %>"
+                    type="number"
+                    id="ho_power"
+                    name="ho_power"
+                    placeholder="Power Range"
+            />
+            <label for="ho_height">Height:</label>
+            <input
+                    class="home-form__input"
+                    value="<%= product.ho_height %>"
+                    type="number"
+                    id="ho_height"
+                    name="ho_height"
+                    placeholder="Height"
+            />
+            <label for="ho_width">Width:</label>
+            <input
+                    class="home-form__input"
+                    value="<%= product.ho_width %>"
+                    type="number"
+                    id="ho_width"
+                    name="ho_width"
+                    placeholder="Width"
+            />
+            <label for="ho_weight">Weight:</label>
+            <input
+                    class="home-form__input"
+                    value="<%= product.ho_weight %>"
+                    type="number"
+                    id="ho_weight"
+                    name="ho_weight"
+                    placeholder="Weight"
+            />
+        </div>
+    <% } %>
+
+    <% if (product.pr_category === 'Stationery') { %>
+        <div class="form-field sta-form">
+            <label for="st_color">Color:</label>
+            <input
+                    class="sta-form__input"
+                    value="<%= product.sta_color %>"
+                    type="text"
+                    id="st_color"
+                    name="st_color"
+                    placeholder="Color"
+            />
+        </div>
+    <% } %>
+
+    <% if (product.pr_category === 'Clothing') { %>
+        <div class="form-field cl-form">
+            <label for="cl_size"> Size:</label>
+            <select
+                    required
+                    class="cl-form__input"
+                    name="cl_size"
+                    id="cl_size"
+            >
+                <option value="" selected disabled hidden>Choose here</option>
+                <option value="sm">sm</option>
+                <option value="md">md</option>
+                <option value="l">l</option>
+                <option value="xl">xl</option>
+                <option value="xxl">xxl</option>
+                <option value="xxxl">xxxl</option>
+            </select>
+        </div>
+    <% } %>
+
+    <div class="button-div">
+        <button class="button" type="submit">Add Product</button>
+    </div>
+</form>
+<%- include('includes/end.ejs') %>

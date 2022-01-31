@@ -1,7 +1,7 @@
 import { addStock, deleteStock, updateStock } from "./stock.js";
 import { addBranch, deleteBranch, updateBranch } from "./branch.js";
 import { addEmployee, deleteEmployee, updateEmployee } from "./employee.js";
-import { addProduct, deleteProduct } from "./product.js";
+import { addProduct, deleteProduct, updateProduct } from "./product.js";
 
 const addStockForm = document.querySelector(".form-add-stock");
 if (addStockForm) {
@@ -145,7 +145,7 @@ if (addEmployeeForm) {
         em_lastname: lastname,
         em_fatherName: father,
         em_phone: phone,
-        em_photo: image,
+        em_photo: image ? image : "user-profile.png",
         em_id: id,
         em_naid: naid,
         em_brithDate: birth,
@@ -469,6 +469,7 @@ if (updateEmployeeForm) {
     const lastname = form.get("lastname");
     const father = form.get("father");
     const phone = form.get("phone");
+    const image = form.get("image");
     const id = form.get("id");
     const naid = form.get("naid");
     const personnel = form.get("personnel");
@@ -484,6 +485,7 @@ if (updateEmployeeForm) {
       em_lastname: lastname,
       em_fatherName: father,
       em_phone: phone,
+      em_photo: image ? image : "user-profile.png",
       em_id: id,
       em_naid: naid,
       em_personnelCode: personnel,
@@ -495,9 +497,6 @@ if (updateEmployeeForm) {
         postalCode,
       },
     };
-    if (form.get("image")) {
-      data["em_photo"] = form.get("image");
-    }
     if (form.get("birth")) {
       console.log(form.get("brith"));
       data["em_brithDate"] = form.get("brith");
@@ -522,6 +521,74 @@ if (updateEmployeeForm) {
     // console.log(data);
     try {
       await updateEmployee(updateEmployeeForm.dataset.employee, data, url);
+      // location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}
+
+// Update Product
+const updateProductForm = document.querySelector(".form-update-product");
+if (updateProductForm) {
+  updateProductForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const category = document.querySelector('input[name="category"]').dataset
+      .category;
+    const name = form.get("name");
+    const brand = form.get("brand");
+    const barcode = form.get("barcode");
+    const prdoction = form.get("prdoction");
+    const price = form.get("price");
+    const image = form.get("image");
+    const fo_ep = form.get("fo_ep");
+    const fo_weight = form.get("fo_weight");
+    const fo_pack = form.get("fo_pack");
+    const ho_energy = form.get("ho_energy");
+    const ho_power = form.get("ho_power");
+    const ho_height = form.get("ho_height");
+    const ho_width = form.get("ho_width");
+    const ho_weight = form.get("ho_weight");
+    const st_color = form.get("st_color");
+    const cl_size = form.get("cl_size");
+    let url;
+
+    const data = {
+      pr_name: name,
+      pr_brand: brand,
+      pr_price: price,
+      pr_barcode: barcode,
+      pr_image: image ? image : "product.jpg",
+    };
+    if (prdoction) {
+      data["pr_pd"] = prdoction;
+    }
+
+    if (category === "Foodstuff") {
+      if (fo_ep) {
+        data["fo_ep"] = fo_ep;
+      }
+      data["fo_weight"] = fo_weight;
+      data["fo_packType"] = fo_pack;
+      url = "/api/v1/product/foodstuff";
+    } else if (category === "HomeAppliance") {
+      data["ho_energyCh"] = ho_energy;
+      data["ho_powerRange"] = ho_power;
+      data["ho_height"] = ho_height;
+      data["ho_width"] = ho_width;
+      data["ho_weight"] = ho_weight;
+      url = "/api/v1/product/homeappliance";
+    } else if (category === "Stationery") {
+      data["sta_color"] = st_color;
+      url = "/api/v1/product/stationery";
+    } else if (category === "Clothing") {
+      data["cl_size"] = cl_size;
+      url = "/api/v1/product/clothing";
+    }
+
+    try {
+      await updateProduct(updateProductForm.dataset.product, data, url);
       // location.reload();
     } catch (err) {
       console.log(err);

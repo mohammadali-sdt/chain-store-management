@@ -4,7 +4,6 @@ const AppError = require("../utils/appError");
 const employeeModel = require("../models/employeeModel");
 const Branch = require("../models/branchModel");
 const Stock = require("../models/stockModel");
-const { Employee } = require("../models/employeeModel");
 
 exports.getHomePage = catchAsync(async (req, res, next) => {
   const products = await productModel.Product.find();
@@ -81,9 +80,17 @@ exports.updateBranch = catchAsync(async (req, res, next) => {
 });
 
 exports.updateEmployee = catchAsync(async (req, res, next) => {
-  const employee = await Employee.findById(req.params.id);
+  const employee = await employeeModel.Employee.findById(req.params.id);
   res.status(200).render("update-employee", {
     title: "Update Employee",
     employee,
+  });
+});
+
+exports.updateProduct = catchAsync(async (req, res, next) => {
+  const product = await productModel.Product.findById(req.params.id);
+  res.status(200).render("update-product", {
+    title: "Update Product",
+    product,
   });
 });

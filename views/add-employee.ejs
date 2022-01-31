@@ -17,7 +17,7 @@
 
     <div class="form-field">
         <label for="phone">Phone:</label>
-        <input required type="tel" id="phone" name="phone" placeholder="Phone"/>
+        <input required pattern="[0-9]{11}" type="tel" id="phone" name="phone" placeholder="Phone"/>
     </div>
 
     <div class="form-field">
@@ -33,12 +33,12 @@
 
     <div class="form-field">
         <label for="id">Id:</label>
-        <input required pattern="[0-9]{10}" type="number" id="id" name="id" placeholder="Id"/>
+        <input required pattern="[0-9]{10}" type="text" id="id" name="id" placeholder="Id"/>
     </div>
 
     <div class="form-field">
         <label for="naid">National Id:</label>
-        <input required type="number" id="naid" name="naid" placeholder="National Id:"/>
+        <input required type="text" id="naid" pattern="[0-9]{0,10}" name="naid" placeholder="National Id:"/>
     </div>
 
     <div class="form-field">
@@ -48,7 +48,7 @@
 
     <div class="form-field">
         <label for="personnel">Personnel Code:</label>
-        <input required pattern="[0-9]{9}" type="number" id="personnel" name="personnel" placeholder="Personnel Code:"/>
+        <input required pattern="[0-9]{9}" type="text" id="personnel" name="personnel" placeholder="Personnel Code:"/>
     </div>
 
     <div class="form-field">
@@ -97,7 +97,7 @@
         <label for="postal">Postal Code:</label>
         <input
                 required
-                type="number"
+                type="text"
                 pattern="[0-9]{10}"
                 id="postal"
                 name="postal"

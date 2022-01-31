@@ -8,7 +8,10 @@ router
   .get(stockController.getAllStock)
   .post(stockController.createStock);
 
-router.route("/:id").delete(stockController.deleteStock);
+router
+  .route("/:id")
+  .delete(stockController.deleteStock)
+  .patch(stockController.updateStock);
 
 router.route("/:city").get(stockController.getStocksByCity);
 

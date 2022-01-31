@@ -1,4 +1,4 @@
-import { addStock, deleteStock } from "./stock.js";
+import { addStock, deleteStock, updateStock } from "./stock.js";
 import { addBranch, deleteBranch } from "./branch.js";
 import { addEmployee, deleteEmployee } from "./employee.js";
 import { addProduct, deleteProduct } from "./product.js";
@@ -30,7 +30,6 @@ if (addStockForm) {
       },
     });
     addStockForm.reset();
-    alert("Stock Added Successfully");
   });
 }
 
@@ -62,7 +61,6 @@ if (addBranchForm) {
       },
     });
     addBranchForm.reset();
-    alert("Branch Added Successfully");
   });
 }
 
@@ -175,8 +173,9 @@ if (addEmployeeForm) {
       } else {
         url = "/api/v1/employee/central";
       }
-      console.log(data);
+      // console.log(data);
       await addEmployee(url, data);
+      addEmployeeForm.reset();
     } catch (err) {
       console.log(err);
     }
@@ -319,7 +318,6 @@ if (addProductForm) {
 
     await addProduct(url, data);
     addProductForm.reset();
-    alert("Your Product added successfully!");
   });
 }
 
@@ -327,8 +325,8 @@ if (addProductForm) {
 const stocks = document.querySelector(".stocks");
 if (stocks) {
   stocks.addEventListener("click", async function (e) {
-    e.preventDefault();
     if (e.target.classList.contains("detail-btn__remove")) {
+      e.preventDefault();
       const stockId = e.target.parentNode.parentNode.dataset.stock;
       try {
         await deleteStock(stockId);
@@ -345,6 +343,7 @@ const branches = document.querySelector(".branches");
 if (branches) {
   branches.addEventListener("click", async function (e) {
     if (e.target.classList.contains("detail-btn__remove")) {
+      e.preventDefault();
       const branchId = e.target.parentNode.parentNode.dataset.branch;
       try {
         await deleteBranch(branchId);
@@ -360,8 +359,8 @@ if (branches) {
 const employees = document.querySelector(".employees");
 if (employees) {
   employees.addEventListener("click", async function (e) {
-    e.preventDefault();
     if (e.target.classList.contains("detail-btn__remove")) {
+      e.preventDefault();
       const employeeId = e.target.parentNode.parentNode.dataset.employee;
       try {
         await deleteEmployee(employeeId);
@@ -377,8 +376,8 @@ if (employees) {
 const products = document.querySelector(".prds");
 if (products) {
   products.addEventListener("click", async function (e) {
-    e.preventDefault();
     if (e.target.classList.contains("detail-btn__remove")) {
+      e.preventDefault();
       const productId = e.target.parentNode.parentNode.dataset.product;
       try {
         await deleteProduct(productId);
@@ -387,5 +386,40 @@ if (products) {
         console.log(err);
       }
     }
+  });
+}
+
+// Update Stock
+const updateStockForm = document.querySelector(".form-update-stock");
+if (updateStockForm) {
+  updateStockForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const capacity = form.get("capacity");
+    const phone = form.get("phone");
+    const city = form.get("city");
+    const street = form.get("street");
+    const alley = form.get("alley");
+    const pelaque = form.get("pelaque");
+    const postalCode = form.get("postal");
+    console.log(updateStockForm.dataset.stock);
+    try {
+      await updateStock(updateStockForm.dataset.stock, {
+        st_name: name,
+        st_capacity: capacity,
+        st_phone: phone,
+        st_address: {
+          city,
+          street,
+          alley,
+          pelaque,
+          postalCode,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    location.reload();
   });
 }

@@ -62,3 +62,11 @@ exports.addProduct = (req, res, next) => {
     title: "Add Product",
   });
 };
+
+exports.updateStock = catchAsync(async (req, res, next) => {
+  const stock = await Stock.findById(req.params.id);
+  res.status(200).render("update-stock", {
+    title: "Update Stock",
+    stock,
+  });
+});

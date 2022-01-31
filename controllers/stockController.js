@@ -8,6 +8,8 @@ exports.createStock = genericCrud.createOne(Stock);
 
 exports.deleteStock = genericCrud.deleteOne(Stock);
 
+exports.updateStock = genericCrud.updateOne(Stock);
+
 exports.getStocksByCity = catchAsync(async (req, res, next) => {
   console.log(req.params);
   const stocks = await Stock.find({ "st_address.city": req.params.city });

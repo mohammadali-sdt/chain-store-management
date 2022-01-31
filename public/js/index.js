@@ -595,3 +595,12 @@ if (updateProductForm) {
     }
   });
 }
+
+const navLinks = document.querySelectorAll("nav a");
+const subnavs = document.querySelectorAll(".subnav");
+const menu = document.querySelector(".hamburger-menu");
+menu.addEventListener("click", function (e) {
+  e.preventDefault();
+  navLinks.forEach((link) => link.classList.toggle("show"));
+  subnavs.forEach((link) => link.classList.toggle("show"));
+});

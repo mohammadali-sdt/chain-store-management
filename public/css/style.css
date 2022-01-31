@@ -294,9 +294,6 @@ nav .home-btn {
     display: none;
 }
 
-.show {
-    display: block;
-}
 
 .subnav{
     /*position: relative;*/
@@ -339,6 +336,11 @@ nav .home-btn {
     display: none;
 }
 
+
+.show {
+    display: block !important;
+}
+
 @media screen and (max-width: 40.625em) {
     nav {
         display: flex;
@@ -349,6 +351,15 @@ nav .home-btn {
 
     nav a {
         display: none;
+    }
+
+    .subnav {
+        display: none;
+    }
+
+    .customer-links{
+        align-self: center;
+        margin-left: 0;
     }
 
     .hamburger-menu {

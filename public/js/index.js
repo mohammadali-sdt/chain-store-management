@@ -1,6 +1,6 @@
 import { addStock, deleteStock, updateStock } from "./stock.js";
 import { addBranch, deleteBranch, updateBranch } from "./branch.js";
-import { addEmployee, deleteEmployee } from "./employee.js";
+import { addEmployee, deleteEmployee, updateEmployee } from "./employee.js";
 import { addProduct, deleteProduct } from "./product.js";
 
 const addStockForm = document.querySelector(".form-add-stock");
@@ -423,7 +423,7 @@ if (updateStockForm) {
     location.reload();
   });
 }
-
+// update branch
 const updateBranchForm = document.querySelector(".form-update-branch");
 if (updateBranchForm) {
   updateBranchForm.addEventListener("submit", async function (e) {
@@ -454,6 +454,77 @@ if (updateBranchForm) {
       location.reload();
     } catch (err) {
       console.error(err);
+    }
+  });
+}
+
+// update Employee
+const updateEmployeeForm = document.querySelector(".form-update-employee");
+if (updateEmployeeForm) {
+  updateEmployeeForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const roleInput = document.querySelector('input[name="role"]').dataset.role;
+    const name = form.get("name");
+    const lastname = form.get("lastname");
+    const father = form.get("father");
+    const phone = form.get("phone");
+    const id = form.get("id");
+    const naid = form.get("naid");
+    const personnel = form.get("personnel");
+    const city = form.get("city");
+    const street = form.get("street");
+    const alley = form.get("alley");
+    const pelaque = form.get("pelaque");
+    const postalCode = form.get("postal");
+    let url;
+    //
+    const data = {
+      em_name: name,
+      em_lastname: lastname,
+      em_fatherName: father,
+      em_phone: phone,
+      em_id: id,
+      em_naid: naid,
+      em_personnelCode: personnel,
+      em_address: {
+        city,
+        street,
+        alley,
+        pelaque,
+        postalCode,
+      },
+    };
+    if (form.get("image")) {
+      data["em_photo"] = form.get("image");
+    }
+    if (form.get("birth")) {
+      console.log(form.get("brith"));
+      data["em_brithDate"] = form.get("brith");
+    }
+    if (roleInput === "branch") {
+      data["brem_work"] = form.get("brem_work");
+      if (form.get("brem_employ")) {
+        data["brem_employmentDate"] = form.get("brem_employ");
+      }
+      url = "/api/v1/employee/branch";
+    } else if (roleInput === "stock") {
+      data["stem_work"] = form.get("stem_work");
+      if (form.get("stem_employ")) {
+        data["stem_employmentDate"] = form.get("stem_employ");
+      }
+      data["stem_section"] = form.get("section");
+      data["stem_manager"] = form.get("manager") === "True";
+      url = "/api/v1/employee/stock";
+    } else {
+      url = "/api/v1/employee/central";
+    }
+    // console.log(data);
+    try {
+      await updateEmployee(updateEmployeeForm.dataset.employee, data, url);
+      // location.reload();
+    } catch (err) {
+      console.log(err);
     }
   });
 }

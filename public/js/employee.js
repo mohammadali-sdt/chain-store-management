@@ -26,3 +26,19 @@ export const deleteEmployee = async function (id) {
     console.log(err.response.data.message);
   }
 };
+
+export const updateEmployee = async function (id, data, url) {
+  try {
+    const res = await axios({
+      method: "PATCH",
+      url: `${url}/${id}`,
+      data,
+    });
+
+    if (res.data.status === "success") {
+      alert("Employee Updated Successfully");
+    }
+  } catch (err) {
+    console.log(err.response.data.message);
+  }
+};

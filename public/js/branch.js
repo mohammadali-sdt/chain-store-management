@@ -38,7 +38,7 @@ export const updateBranch = async (id, data) => {
     });
 
     if (res.data.status === "success") {
-      alert("Branch deleted successfully!");
+      alert("Branch updated successfully!");
     }
   } catch (err) {
     console.log(err.response.data.message);

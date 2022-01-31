@@ -1,17 +1,17 @@
 <%- include('includes/head.ejs') %>
 <%- include('includes/nav.ejs') %>
 <main class="container">
-    <div class="products">
+    <div class="products prds">
         <% if (products.length > 0) { %>
             <% products.forEach((product)=> { %>
-                <div class="product">
+                <div class="product" data-product="<%= product._id %>">
                     <img crossorigin='anonymous' src="<%= product.pr_image === `product.jpg` ? `/img/${product.pr_image}` : product.pr_image %>"
                          alt="<%= product.pr_name %>"/>
                     <h2 class="product__title"><%= product.pr_name %></h2>
                     <p class="product__price"><%= product.pr_price %></p>
                     <div class="buttons">
                         <a class="detail-btn">Details</a>
-                        <a href="#" class="detail-btn">Remove</a>
+                        <a href="#" class="detail-btn detail-btn__remove">Remove</a>
                         <a href="#" class="detail-btn">Update</a>
                     </div>
                 </div>

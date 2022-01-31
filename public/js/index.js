@@ -1,5 +1,5 @@
 import { addStock, deleteStock, updateStock } from "./stock.js";
-import { addBranch, deleteBranch } from "./branch.js";
+import { addBranch, deleteBranch, updateBranch } from "./branch.js";
 import { addEmployee, deleteEmployee } from "./employee.js";
 import { addProduct, deleteProduct } from "./product.js";
 
@@ -421,5 +421,39 @@ if (updateStockForm) {
       console.log(err);
     }
     location.reload();
+  });
+}
+
+const updateBranchForm = document.querySelector(".form-update-branch");
+if (updateBranchForm) {
+  updateBranchForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const phone = form.get("phone");
+    const owner = form.get("owner");
+    const city = form.get("city");
+    const street = form.get("street");
+    const alley = form.get("alley");
+    const pelaque = form.get("pelaque");
+    const postalCode = form.get("postal");
+
+    try {
+      await updateBranch(updateBranchForm.dataset.branch, {
+        br_name: name,
+        br_owner: owner,
+        br_phone: phone,
+        br_address: {
+          city,
+          street,
+          alley,
+          pelaque,
+          postalCode,
+        },
+      });
+      location.reload();
+    } catch (err) {
+      console.error(err);
+    }
   });
 }

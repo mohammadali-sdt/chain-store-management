@@ -70,3 +70,11 @@ exports.updateStock = catchAsync(async (req, res, next) => {
     stock,
   });
 });
+
+exports.updateBranch = catchAsync(async (req, res, next) => {
+  const branch = await Branch.findById(req.params.id);
+  res.status(200).render("update-branch", {
+    title: "Update Branch",
+    branch,
+  });
+});

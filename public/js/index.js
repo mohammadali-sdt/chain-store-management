@@ -1,7 +1,7 @@
 import { addStock, deleteStock } from "./stock.js";
 import { addBranch, deleteBranch } from "./branch.js";
 import { addEmployee, deleteEmployee } from "./employee.js";
-import { addProduct } from "./product.js";
+import { addProduct, deleteProduct } from "./product.js";
 
 const addStockForm = document.querySelector(".form-add-stock");
 if (addStockForm) {
@@ -365,6 +365,23 @@ if (employees) {
       const employeeId = e.target.parentNode.parentNode.dataset.employee;
       try {
         await deleteEmployee(employeeId);
+        location.reload();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  });
+}
+
+//Delete Product
+const products = document.querySelector(".prds");
+if (products) {
+  products.addEventListener("click", async function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("detail-btn__remove")) {
+      const productId = e.target.parentNode.parentNode.dataset.product;
+      try {
+        await deleteProduct(productId);
         location.reload();
       } catch (err) {
         console.log(err);

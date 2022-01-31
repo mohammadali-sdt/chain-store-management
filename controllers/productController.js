@@ -10,6 +10,8 @@ exports.createHomeAppliance = genericCrud.createOne(productModel.HomeAppliance);
 
 exports.getAllFoods = genericCrud.getAll(productModel.Foodstuff);
 
+exports.deleteProduct = genericCrud.deleteOne(productModel.Product);
+
 exports.getOutdateFoods = catchAsync(async (req, res, next) => {
   const outdatedFoods = await productModel.Foodstuff.find({
     fo_ep: { $lt: Date.now() },
